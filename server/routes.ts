@@ -239,7 +239,7 @@ export function registerRoutes(app: Express): Server {
         phone
       };
 
-      console.log('Request a Wallet Club API:', JSON.stringify(requestBody, null, 2));
+      console.log('Request a SmartPasses API:', JSON.stringify(requestBody, null, 2));
 
       const response = await fetch(
         `${SERVER_CONFIG.walletClub.baseUrl}/loyalty/programs/${SERVER_CONFIG.walletClub.programId}/customers`, 
@@ -257,10 +257,10 @@ export function registerRoutes(app: Express): Server {
         errors?: Array<{field: string, reasons: string[]}>,
         message?: string
       };
-      console.log('Respuesta de Wallet Club API:', JSON.stringify(responseData, null, 2));
+      console.log('Respuesta de SmartPasses API:', JSON.stringify(responseData, null, 2));
 
       if (!response.ok) {
-        console.error('Error en Wallet Club API:', JSON.stringify(responseData, null, 2));
+        console.error('Error en SmartPasses API:', JSON.stringify(responseData, null, 2));
 
         // Verificamos que responseData tenga la estructura esperada
         if (responseData && typeof responseData === 'object' && 'errors' in responseData && Array.isArray(responseData.errors)) {
