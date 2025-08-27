@@ -64,10 +64,10 @@ export default function Home() {
         <div className="absolute top-1/4 left-1/5 w-64 h-64 rounded-full bg-blue-400/20 backdrop-blur-3xl animate-float" style={{animationDelay: '0s'}}></div>
         <div className="absolute top-2/3 right-1/4 w-96 h-96 rounded-full bg-indigo-500/20 backdrop-blur-3xl animate-float" style={{animationDelay: '2s'}}></div>
         <div className="absolute bottom-1/3 left-1/3 w-72 h-72 rounded-full bg-purple-500/20 backdrop-blur-3xl animate-float" style={{animationDelay: '1s'}}></div>
-        
+
         {/* Patrón de grid superpuesto */}
         <div className="absolute inset-0 bg-gradient-to-tr from-blue-800/20 to-transparent mix-blend-overlay"></div>
-        
+
         {/* Capa de difuminado para crear efecto glassmorfismo */}
         <div className="absolute inset-0 backdrop-blur-[2px]"></div>
       </div>
@@ -83,18 +83,16 @@ export default function Home() {
               className="w-full h-full rounded-full object-cover"
             />
           </div>
-          
+
           {/* Título con tipografía mejorada - Responsivo */}
           <div className="text-center space-y-2 sm:space-y-4 w-full max-w-4xl px-2 sm:px-4">
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight">
-              <span className="block sm:inline text-white drop-shadow-[0_2px_2px_rgba(0,0,0,0.3)]">Smart</span>{" "}
-              <span className="block sm:inline text-[#10A852] drop-shadow-[0_2px_2px_rgba(0,0,0,0.3)]">Passes</span>{" "}
-              <span className="block sm:inline text-white drop-shadow-[0_2px_2px_rgba(0,0,0,0.3)]">-</span>{" "}
-              <span className="block sm:inline text-white drop-shadow-[0_2px_2px_rgba(0,0,0,0.3)]">Un Método Directo</span>{" "}
-              <span className="block sm:inline text-[#0A85FF] drop-shadow-[0_2px_2px_rgba(0,0,0,0.3)]">para Tarjetas Digitales</span>
+              <span className="block sm:inline text-white drop-shadow-[0_2px_2px_rgba(0,0,0,0.3)]">Los Pasteles</span>{" "}
+              <span className="block sm:inline text-[#ff69b4] drop-shadow-[0_2px_2px_rgba(0,0,0,0.3)]">de</span>{" "}
+              <span className="block sm:inline text-white drop-shadow-[0_2px_2px_rgba(0,0,0,0.3)]">Roxie</span>
             </h1>
-            <p className="text-lg sm:text-xl md:text-2xl text-white font-medium max-w-2xl mx-auto mt-2 drop-shadow-[0_1px_1px_rgba(0,0,0,0.3)]">
-              Programas de Lealtad y ¡Mucho Más!
+            <p className="text-base sm:text-lg md:text-xl text-white/90 max-w-2xl mx-auto leading-relaxed drop-shadow-[0_1px_1px_rgba(0,0,0,0.3)]">
+              Únete a nuestro programa de lealtad y disfruta de deliciosos pasteles, beneficios exclusivos y ofertas especiales
             </p>
           </div>
         </div>

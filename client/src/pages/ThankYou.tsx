@@ -41,7 +41,7 @@ export default function ThankYou() {
           <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold">
             <span className="text-white drop-shadow-[0_2px_2px_rgba(0,0,0,0.3)]">¡Gracias!</span>
           </h1>
-          <p className="text-base sm:text-xl md:text-2xl text-[#10A852] font-medium max-w-md text-center drop-shadow-[0_1px_1px_rgba(0,0,0,0.3)]">
+          <p className="text-base sm:text-xl md:text-2xl text-[#ff69b4] font-medium max-w-md text-center drop-shadow-[0_1px_1px_rgba(0,0,0,0.3)]">
             Tu registro ha sido completado exitosamente
           </p>
         </div>
