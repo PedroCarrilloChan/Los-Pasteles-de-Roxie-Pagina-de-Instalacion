@@ -134,11 +134,11 @@ export default function IphoneInstall() {
     <div className="min-h-screen px-4 py-6 sm:px-6" style={{ background: 'linear-gradient(135deg, #DC143C 0%, #E85A4F 50%, #F5E6D3 100%)' }}>
       {/* Logo flotante en la esquina superior */}
       <div className="fixed top-4 left-4 z-50">
-        <div className="glass-card w-12 h-12 sm:w-16 sm:h-16 rounded-full p-2 shadow-lg">
+        <div className="glass-card w-12 h-12 sm:w-16 sm:h-16 rounded-full floating-logo shadow-lg">
           <img 
             src="https://walletclub.s3.us-east-1.amazonaws.com/Los+Pasteles+de+Roxie+Logo+3d.png"
             alt="Los Pasteles de Roxie" 
-            className="w-full h-full object-contain rounded-full"
+            className="rounded-full"
           />
         </div>
       </div>
@@ -159,21 +159,21 @@ export default function IphoneInstall() {
           <div className="bg-white/20 backdrop-blur-md p-4 sm:p-6 rounded-lg space-y-4 sm:space-y-6 border border-white/30 shadow-lg">
             <div className="space-y-4 sm:space-y-6">
               <div className="space-y-2 sm:space-y-3">
-                <h2 className="text-base sm:text-lg font-bold flex items-center text-blue-900 drop-shadow-[0_1px_1px_rgba(255,255,255,0.8)]">
-                  <span className="bg-blue-500 text-white w-6 h-6 rounded-full inline-flex items-center justify-center mr-2 text-sm shadow-md">1</span>
+                <h2 className="text-base sm:text-lg font-bold flex items-center text-red-800 drop-shadow-[0_1px_1px_rgba(255,255,255,0.8)]">
+                  <span className="bg-gradient-to-r from-red-500 to-pink-600 text-white w-6 h-6 rounded-full inline-flex items-center justify-center mr-2 text-sm shadow-md">1</span>
                   Primer Paso
                 </h2>
-                <p className="text-sm sm:text-base text-blue-800 bg-white/40 p-2 rounded-md shadow-sm font-medium">
+                <p className="text-sm sm:text-base text-red-700 bg-white/40 p-2 rounded-md shadow-sm font-medium">
                   Toca el botón "Obtener mi tarjeta" para abrir la tarjeta:
                 </p>
               </div>
 
               <div className="space-y-2 sm:space-y-3 pt-2">
-                <h2 className="text-base sm:text-lg font-bold flex items-center text-blue-900 drop-shadow-[0_1px_1px_rgba(255,255,255,0.8)]">
-                  <span className="bg-blue-500 text-white w-6 h-6 rounded-full inline-flex items-center justify-center mr-2 text-sm shadow-md">2</span>
+                <h2 className="text-base sm:text-lg font-bold flex items-center text-red-800 drop-shadow-[0_1px_1px_rgba(255,255,255,0.8)]">
+                  <span className="bg-gradient-to-r from-red-500 to-pink-600 text-white w-6 h-6 rounded-full inline-flex items-center justify-center mr-2 text-sm shadow-md">2</span>
                   Segundo Paso
                 </h2>
-                <p className="text-sm sm:text-base text-blue-800 bg-white/40 p-2 rounded-md shadow-sm font-medium">
+                <p className="text-sm sm:text-base text-red-700 bg-white/40 p-2 rounded-md shadow-sm font-medium">
                   Luego, toca el botón "Añadir" como se muestra:
                 </p>
                 <div className="bg-white/5 backdrop-blur-sm p-1 rounded-lg">
@@ -234,7 +234,7 @@ export default function IphoneInstall() {
                         <ScanLine className="h-7 w-7 sm:h-8 sm:w-8 text-blue-300" />
                       </div>
                     </div>
-                    <p className="text-xs sm:text-sm font-medium text-center text-white/80">
+                    <p className="text-xs sm:text-sm font-medium text-center text-yellow-100 drop-shadow-md">
                       ¡También puedes escanear este código QR con tu iPhone!
                     </p>
                     <div className="p-3 sm:p-4 bg-white rounded-lg sm:rounded-xl shadow-lg transform transition-all duration-300 hover:scale-105">
