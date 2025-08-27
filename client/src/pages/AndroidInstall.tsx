@@ -1,156 +1,94 @@
 import { useEffect, useState } from "react";
-import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { useToast } from "@/hooks/use-toast";
-import { useQuery } from "@tanstack/react-query";
-import { loyaltyApi } from "@/lib/api";
-import { Loader2, ChevronRight, ScanLine, Send } from "lucide-react";
-import { QRCodeSVG } from "qrcode.react";
+import { Button } from "@/components/ui/button";
+import { Loader2, CheckCircle, Smartphone, Download } from "lucide-react";
 
 export default function AndroidInstall() {
-  const { toast } = useToast();
-  const [androidUrl, setAndroidUrl] = useState<string>("");
-  const [isProcessing, setIsProcessing] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-  const [retryCount, setRetryCount] = useState(0);
-  const [emailSent, setEmailSent] = useState(false);
-  const [isSendingEmail, setIsSendingEmail] = useState(false);
-  const [email, setEmail] = useState<string>("");
-
-  const { data: loyaltyData, isLoading: isDataLoading } = useQuery({
-    queryKey: ["/api/loyalty-data"],
-    queryFn: loyaltyApi.getLoyaltyData,
-    retry: false
-  });
+  const [loyaltyData, setLoyaltyData] = useState<any>(null);
+  const [isDataLoading, setIsDataLoading] = useState(true);
+  const [isGeneratingLink, setIsGeneratingLink] = useState(false);
+  const [androidLink, setAndroidLink] = useState<string | null>(null);
 
   useEffect(() => {
-    if (loyaltyData?.email) {
-      setEmail(loyaltyData.email);
-    }
-  }, [loyaltyData?.email]);
+    // Obtener datos de lealtad
+    fetch('/api/loyalty-data')
+      .then(res => res.json())
+      .then(data => {
+        setLoyaltyData(data);
+        setIsDataLoading(false);
+      })
+      .catch(err => {
+        console.error('Error al obtener datos:', err);
+        setIsDataLoading(false);
+      });
+  }, []);
 
-  const handleSendEmail = async () => {
-    if (!email || !androidUrl) return;
+  const generateAndroidLink = async () => {
+    if (!loyaltyData?.card?.url) return;
 
-    setIsSendingEmail(true);
+    setIsGeneratingLink(true);
+
     try {
-      // Primer request: enviar correo
-      const emailResponse = await fetch('/api/send-email', {
+      const response = await fetch('/api/android-link', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ email })
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ url: loyaltyData.card.url })
       });
 
-      if (!emailResponse.ok) {
-        throw new Error('Error al enviar el correo');
+      const result = await response.json();
+
+      if (response.ok && result.passwalletLink) {
+        setAndroidLink(result.passwalletLink);
+
+        // Enviar URL de instalación
+        await fetch('/api/send-install-url', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ url: result.passwalletLink })
+        });
+      } else {
+        throw new Error(result.error || 'Error al generar el enlace');
       }
-
-      // Esperar 3 segundos
-      await new Promise(resolve => setTimeout(resolve, 3000));
-
-      // Segundo request: enviar URL de instalación
-      const urlResponse = await fetch('/api/send-install-url', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ url: androidUrl })
-      });
-
-      if (!urlResponse.ok) {
-        throw new Error('Error al enviar la URL de instalación');
-      }
-
-      // Tercer request: enviar tipo de dispositivo
-      const deviceResponse = await fetch('/api/send-device-type', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ deviceType: 'Android' })
-      });
-
-      if (!deviceResponse.ok) {
-        throw new Error('Error al enviar el tipo de dispositivo');
-      }
-
-      setEmailSent(true);
-      toast({
-        title: "Correo enviado",
-        description: "Las instrucciones han sido enviadas a tu correo electrónico.",
-      });
     } catch (error) {
-      console.error('Error en el envío de correo:', error);
-      toast({
-        variant: "destructive",
-        title: "Error",
-        description: "No se pudo enviar el correo. Por favor, intenta nuevamente.",
-      });
+      console.error('Error:', error);
+      alert('Error al generar el enlace de Android. Por favor intenta nuevamente.');
     } finally {
-      setIsSendingEmail(false);
+      setIsGeneratingLink(false);
     }
   };
 
-  useEffect(() => {
-    const processUrl = async () => {
-      if (!loyaltyData?.card?.url) {
-        setError("No se encontró la URL de la tarjeta");
-        return;
-      }
-
-      setIsProcessing(true);
-      setError(null);
-      try {
-        console.log('Procesando URL para Android:', loyaltyData.card.url);
-        const modifiedUrl = await loyaltyApi.getModifiedUrl(loyaltyData.card.url);
-        console.log('URL modificada:', modifiedUrl);
-        const androidLink = await loyaltyApi.getAndroidInstallLink(modifiedUrl);
-        console.log('Link para Android generado:', androidLink);
-        setAndroidUrl(androidLink);
-        setRetryCount(0);
-      } catch (error) {
-        console.error('Failed to process Android URL:', error);
-        const errorMessage = error instanceof Error 
-          ? error.message 
-          : "Error al procesar la URL de instalación";
-        setError(errorMessage);
-        toast({
-          variant: "destructive",
-          title: `Error (Intento ${retryCount + 1})`,
-          description: errorMessage
-        });
-      } finally {
-        setIsProcessing(false);
-      }
-    };
-
-    if (loyaltyData && !androidUrl && !isProcessing) {
-      processUrl();
+  const downloadCard = () => {
+    if (androidLink) {
+      window.open(androidLink, '_blank');
     }
-  }, [loyaltyData, androidUrl, toast, retryCount]);
-
-  const handleRetry = () => {
-    setRetryCount(prev => prev + 1);
-    setAndroidUrl("");
   };
 
   if (isDataLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center p-4">
-        {/* Fondo con efecto glassmorphism */}
-        <div className="absolute inset-0 w-full h-full z-0 bg-gradient-to-br from-blue-900 via-indigo-700 to-blue-900 overflow-hidden">
-          {/* Elementos decorativos flotantes */}
-          <div className="absolute top-1/4 left-1/5 w-48 h-48 sm:w-64 sm:h-64 rounded-full bg-blue-400/20 backdrop-blur-3xl animate-float" style={{animationDelay: '0s'}}></div>
-          <div className="absolute bottom-1/4 right-1/5 w-56 h-56 sm:w-80 sm:h-80 rounded-full bg-indigo-500/20 backdrop-blur-3xl animate-float" style={{animationDelay: '1s'}}></div>
-          
-          {/* Capa de difuminado */}
-          <div className="absolute inset-0 backdrop-blur-[2px]"></div>
+        {/* Fondo con efecto glassmorphism sutil */}
+        <div className="absolute inset-0 w-full h-full z-0 overflow-hidden">
+          {/* Elementos decorativos sutiles flotantes */}
+          <div className="absolute top-1/4 left-1/5 w-48 h-48 sm:w-64 sm:h-64 rounded-full backdrop-blur-3xl animate-float opacity-15"
+               style={{
+                 animationDelay: '0s',
+                 background: 'radial-gradient(circle, rgba(232, 90, 79, 0.2) 0%, rgba(245, 230, 211, 0.1) 50%, transparent 100%)',
+                 filter: 'drop-shadow(0 8px 16px rgba(139, 69, 19, 0.1))'
+               }}>
+          </div>
+          <div className="absolute bottom-1/4 right-1/5 w-56 h-56 sm:w-80 sm:h-80 rounded-full backdrop-blur-3xl animate-float opacity-12"
+               style={{
+                 animationDelay: '1s',
+                 background: 'radial-gradient(circle, rgba(220, 20, 60, 0.15) 0%, rgba(210, 105, 30, 0.08) 50%, transparent 100%)',
+                 filter: 'drop-shadow(0 12px 24px rgba(139, 69, 19, 0.08))'
+               }}>
+          </div>
+
+          {/* Capa de difuminado suave */}
+          <div className="absolute inset-0 backdrop-blur-[1px]"></div>
         </div>
         <div className="z-10">
-          <Loader2 className="h-8 w-8 animate-spin text-white" />
+          <Loader2 className="h-8 w-8 animate-spin" style={{color: '#8B4513'}} />
         </div>
       </div>
     );
@@ -158,159 +96,102 @@ export default function AndroidInstall() {
 
   return (
     <div className="min-h-screen px-4 py-6 sm:px-6">
-      {/* Fondo con efecto glassmorphism */}
-      <div className="absolute inset-0 w-full h-full z-0 bg-gradient-to-br from-blue-900 via-indigo-700 to-blue-900 overflow-hidden">
-        {/* Elementos decorativos flotantes */}
-        <div className="absolute top-1/4 left-1/5 w-40 h-40 sm:w-64 sm:h-64 rounded-full bg-blue-400/20 backdrop-blur-3xl animate-float" style={{animationDelay: '0s'}}></div>
-        <div className="absolute bottom-1/3 right-1/4 w-48 h-48 sm:w-80 sm:h-80 rounded-full bg-indigo-500/20 backdrop-blur-3xl animate-float" style={{animationDelay: '1s'}}></div>
-        
-        {/* Capa de difuminado */}
-        <div className="absolute inset-0 backdrop-blur-[2px]"></div>
+      {/* Fondo con efecto glassmorphism sutil */}
+      <div className="absolute inset-0 w-full h-full z-0 overflow-hidden">
+        {/* Elementos decorativos sutiles flotantes */}
+        <div className="absolute top-1/4 left-1/5 w-40 h-40 sm:w-64 sm:h-64 rounded-full backdrop-blur-3xl animate-float opacity-15"
+             style={{
+               animationDelay: '0s',
+               background: 'radial-gradient(circle, rgba(232, 90, 79, 0.2) 0%, rgba(245, 230, 211, 0.1) 50%, transparent 100%)',
+               filter: 'drop-shadow(0 8px 16px rgba(139, 69, 19, 0.1))'
+             }}>
+        </div>
+        <div className="absolute bottom-1/3 right-1/4 w-48 h-48 sm:w-80 sm:h-80 rounded-full backdrop-blur-3xl animate-float opacity-12"
+             style={{
+               animationDelay: '1s',
+               background: 'radial-gradient(circle, rgba(220, 20, 60, 0.15) 0%, rgba(210, 105, 30, 0.08) 50%, transparent 100%)',
+               filter: 'drop-shadow(0 12px 24px rgba(139, 69, 19, 0.08))'
+             }}>
+        </div>
+
+        {/* Capa de difuminado suave */}
+        <div className="absolute inset-0 backdrop-blur-[1px]"></div>
       </div>
-      
-      <Card className="max-w-lg mx-auto shadow-2xl glass-card backdrop-blur-xl bg-white/15 border border-white/20 relative z-10 rounded-xl sm:rounded-2xl">
+
+      <Card className="max-w-lg mx-auto shadow-2xl glass-card backdrop-blur-xl relative z-10 rounded-xl sm:rounded-2xl">
         <CardContent className="pt-6 space-y-5 sm:space-y-6 p-4 sm:p-6">
-          <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-center mb-4 text-white drop-shadow-[0_2px_2px_rgba(0,0,0,0.3)]">
+          <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-center mb-4 drop-shadow-[0_2px_2px_rgba(255,255,255,0.8)]"
+              style={{color: '#8B4513'}}>
             Bienvenido {loyaltyData?.firstName}
           </h1>
 
-          <div className="bg-white/20 backdrop-blur-md p-4 sm:p-6 rounded-lg space-y-4 sm:space-y-6 border border-white/30 shadow-lg">
-            <div className="space-y-4 sm:space-y-6">
-              <div className="space-y-2 sm:space-y-3">
-                <h2 className="text-base sm:text-lg font-bold flex items-center text-blue-900 drop-shadow-[0_1px_1px_rgba(255,255,255,0.8)]">
-                  <span className="bg-blue-500 text-white w-6 h-6 rounded-full inline-flex items-center justify-center mr-2 text-sm shadow-md">1</span>
-                  Primer Paso
-                </h2>
-                <p className="text-sm sm:text-base text-blue-800 bg-white/40 p-2 rounded-md shadow-sm font-medium">
-                  Toca el botón azul que dice "Instalar" como se muestra:
-                </p>
-                <div className="bg-white/5 backdrop-blur-sm p-1 rounded-lg">
-                  <img
-                    src="https://storage.googleapis.com/tapthetable/assets/1881528/images/Instalar_Android.png"
-                    alt="Paso 1 instalación Android"
-                    className="rounded-lg mx-auto max-w-[260px] sm:max-w-[320px] shadow-md"
-                    loading="lazy"
-                  />
-                </div>
-              </div>
-
-              <div className="space-y-2 sm:space-y-3 pt-2">
-                <h2 className="text-base sm:text-lg font-bold flex items-center text-blue-900 drop-shadow-[0_1px_1px_rgba(255,255,255,0.8)]">
-                  <span className="bg-blue-500 text-white w-6 h-6 rounded-full inline-flex items-center justify-center mr-2 text-sm shadow-md">2</span>
-                  Segundo Paso
-                </h2>
-                <p className="text-sm sm:text-base text-blue-800 bg-white/40 p-2 rounded-md shadow-sm font-medium">
-                  Luego, toca el botón azul que dice "Continuar":
-                </p>
-                <div className="bg-white/5 backdrop-blur-sm p-1 rounded-lg">
-                  <img
-                    src="https://storage.googleapis.com/tapthetable/assets/1881528/images/Continuar_Android.png"
-                    alt="Paso 2 instalación Android"
-                    className="rounded-lg mx-auto max-w-[260px] sm:max-w-[320px] shadow-md"
-                    loading="lazy"
-                  />
-                </div>
-              </div>
+          <div className="text-center space-y-4 sm:space-y-5">
+            <div className="flex justify-center">
+              <Smartphone className="h-16 w-16 sm:h-20 sm:w-20" style={{color: '#E85A4F'}} />
             </div>
-          </div>
 
-          <div className="space-y-4">
-            <p className="text-center text-sm sm:text-base text-white font-medium">
-              ¡Toca el botón para comenzar! 👇
-            </p>
+            <div className="space-y-2 sm:space-y-3">
+              <h2 className="text-lg sm:text-xl font-semibold drop-shadow-[0_1px_1px_rgba(255,255,255,0.8)]"
+                  style={{color: '#8B4513'}}>
+                Descarga para Android
+              </h2>
+              <p className="text-sm sm:text-base leading-relaxed"
+                 style={{color: '#8B4513', opacity: 0.8}}>
+                Haz clic en el botón para generar tu enlace de descarga personalizado para dispositivos Android
+              </p>
+            </div>
 
-            {error ? (
+            {!androidLink ? (
+              <Button
+                onClick={generateAndroidLink}
+                disabled={isGeneratingLink}
+                className="w-full h-12 sm:h-14 text-sm sm:text-base font-semibold text-white flex items-center justify-center gap-3 transform hover:scale-[1.02] transition-all duration-300 shimmer"
+                style={{
+                  background: 'linear-gradient(135deg, #8B4513 0%, #A0522D 100%)',
+                  boxShadow: '0 6px 20px rgba(139, 69, 19, 0.2), 0 3px 10px rgba(160, 82, 45, 0.15)'
+                }}
+              >
+                {isGeneratingLink ? (
+                  <>
+                    <Loader2 className="h-5 w-5 sm:h-6 sm:w-6 animate-spin" />
+                    Generando enlace...
+                  </>
+                ) : (
+                  <>
+                    <Download className="h-5 w-5 sm:h-6 sm:w-6" />
+                    Generar enlace de descarga
+                  </>
+                )}
+              </Button>
+            ) : (
               <div className="space-y-4">
-                <p className="text-sm text-red-300 text-center px-4 bg-red-500/10 py-2 rounded-md backdrop-blur-sm">
-                  {error}
+                <div className="flex justify-center">
+                  <CheckCircle className="h-12 w-12 sm:h-16 sm:w-16" style={{color: '#E85A4F'}} />
+                </div>
+                <p className="text-sm sm:text-base font-medium"
+                   style={{color: '#8B4513'}}>
+                  ¡Enlace generado exitosamente!
                 </p>
-                <Button 
-                  className="w-full h-11 sm:h-12 text-base bg-gradient-to-r from-blue-500 to-indigo-600 
-                            text-white font-medium transition-all duration-300 hover:shadow-lg"
-                  onClick={handleRetry}
+                <Button
+                  onClick={downloadCard}
+                  className="w-full h-12 sm:h-14 text-sm sm:text-base font-semibold text-white flex items-center justify-center gap-3 transform hover:scale-[1.02] transition-all duration-300 shimmer"
+                  style={{
+                    background: 'linear-gradient(135deg, #E85A4F 0%, #DC143C 100%)',
+                    boxShadow: '0 6px 20px rgba(232, 90, 79, 0.2), 0 3px 10px rgba(220, 20, 60, 0.15)'
+                  }}
                 >
-                  Intentar nuevamente
+                  <Download className="h-5 w-5 sm:h-6 sm:w-6" />
+                  Descargar Tarjeta de Lealtad
                 </Button>
               </div>
-            ) : (
-              <>
-                <Button 
-                  className="w-full h-11 sm:h-12 text-base bg-gradient-to-r from-blue-500 to-indigo-600 
-                            text-white font-medium transition-all duration-300 hover:shadow-lg"
-                  disabled={isProcessing || !androidUrl}
-                  onClick={() => androidUrl && window.open(androidUrl, '_blank')}
-                >
-                  {isProcessing ? (
-                    <>
-                      <Loader2 className="mr-2 h-5 w-5 animate-spin" />
-                      Procesando...
-                    </>
-                  ) : (
-                    <>
-                      Obtener mi tarjeta
-                      <ChevronRight className="ml-2 h-5 w-5" />
-                    </>
-                  )}
-                </Button>
-
-                {androidUrl && (
-                  <div className="relative flex flex-col items-center space-y-3 sm:space-y-4 pt-6 sm:pt-8">
-                    <div className="absolute -top-2 left-1/2 transform -translate-x-1/2">
-                      <div className="animate-bounce">
-                        <ScanLine className="h-7 w-7 sm:h-8 sm:w-8 text-blue-300" />
-                      </div>
-                    </div>
-                    <p className="text-xs sm:text-sm font-medium text-center text-white/80">
-                      ¡También puedes escanear este código QR con tu dispositivo Android!
-                    </p>
-                    <div className="p-3 sm:p-4 bg-white rounded-lg sm:rounded-xl shadow-lg transform transition-all duration-300 hover:scale-105">
-                      <QRCodeSVG 
-                        value={androidUrl}
-                        size={160}
-                        level="H"
-                        includeMargin={true}
-                      />
-                    </div>
-                  </div>
-                )}
-
-                {/* Sección de envío por correo */}
-                <div className="border-t border-white/10 pt-5 sm:pt-6 mt-6 sm:mt-8">
-                  <p className="text-xs sm:text-sm text-center text-white/80 mb-3 sm:mb-4">
-                    ¿Prefieres recibir las instrucciones por correo electrónico?
-                  </p>
-                  <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
-                    <Input
-                      type="email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      placeholder="correo@ejemplo.com"
-                      className="h-10 sm:h-11 bg-white/30 backdrop-blur-md text-gray-800 border-white/30 shadow-sm"
-                    />
-                    <Button
-                      onClick={handleSendEmail}
-                      disabled={isSendingEmail || !email || !androidUrl}
-                      className="h-10 sm:h-11 min-w-[90px] sm:min-w-[100px] text-sm sm:text-base
-                                bg-gradient-to-r from-blue-500 to-indigo-600 text-white"
-                    >
-                      {isSendingEmail ? (
-                        <Loader2 className="h-4 w-4 animate-spin" />
-                      ) : (
-                        <>
-                          <Send className="h-4 w-4 mr-2" />
-                          Enviar
-                        </>
-                      )}
-                    </Button>
-                  </div>
-                  {emailSent && (
-                    <p className="text-xs sm:text-sm text-green-300 mt-2 text-center p-2 bg-green-500/10 rounded-md backdrop-blur-sm">
-                      ✅ Correo enviado con éxito. Por favor, revisa tu bandeja de entrada o la carpeta de spam si no lo encuentras.
-                    </p>
-                  )}
-                </div>
-              </>
             )}
+
+            <div className="text-center p-3 sm:p-4 rounded-lg" 
+                 style={{backgroundColor: 'rgba(245, 230, 211, 0.15)'}}>
+              <p className="text-xs sm:text-sm" style={{color: '#8B4513', opacity: 0.7}}>
+                💡 Se instalará automáticamente en PassWallet o en tu app de billetera preferida
+              </p>
+            </div>
           </div>
         </CardContent>
       </Card>
