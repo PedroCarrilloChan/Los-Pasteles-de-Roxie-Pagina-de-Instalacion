@@ -58,18 +58,47 @@ export default function Home() {
 
   return (
     <div className="min-h-screen w-full relative flex flex-col">
-      {/* Fondo dinámico con diseño de glassmorphism */}
-      <div className="absolute inset-0 w-full h-full z-0 bg-gradient-to-br from-blue-900 via-indigo-700 to-blue-900 overflow-hidden">
-        {/* Elementos decorativos flotantes */}
-        <div className="absolute top-1/4 left-1/5 w-64 h-64 rounded-full bg-blue-400/20 backdrop-blur-3xl animate-float" style={{animationDelay: '0s'}}></div>
-        <div className="absolute top-2/3 right-1/4 w-96 h-96 rounded-full bg-indigo-500/20 backdrop-blur-3xl animate-float" style={{animationDelay: '2s'}}></div>
-        <div className="absolute bottom-1/3 left-1/3 w-72 h-72 rounded-full bg-purple-500/20 backdrop-blur-3xl animate-float" style={{animationDelay: '1s'}}></div>
+      {/* Fondo inmersivo 3D de pastelería */}
+      <div className="absolute inset-0 w-full h-full z-0 overflow-hidden">
+        {/* Elementos decorativos de pastelería flotantes */}
+        <div className="absolute top-1/4 left-1/5 w-64 h-64 rounded-full backdrop-blur-3xl animate-float opacity-20"
+             style={{
+               animationDelay: '0s',
+               background: 'radial-gradient(circle, rgba(232, 90, 79, 0.3) 0%, rgba(245, 230, 211, 0.2) 50%, transparent 100%)'
+             }}>
+        </div>
+        <div className="absolute top-2/3 right-1/4 w-96 h-96 rounded-full backdrop-blur-3xl animate-float opacity-15"
+             style={{
+               animationDelay: '2s',
+               background: 'radial-gradient(circle, rgba(220, 20, 60, 0.25) 0%, rgba(210, 105, 30, 0.15) 50%, transparent 100%)'
+             }}>
+        </div>
+        <div className="absolute bottom-1/3 left-1/3 w-72 h-72 rounded-full backdrop-blur-3xl animate-float opacity-25"
+             style={{
+               animationDelay: '1s',
+               background: 'radial-gradient(circle, rgba(210, 105, 30, 0.3) 0%, rgba(245, 230, 211, 0.2) 50%, transparent 100%)'
+             }}>
+        </div>
 
-        {/* Patrón de grid superpuesto */}
-        <div className="absolute inset-0 bg-gradient-to-tr from-blue-800/20 to-transparent mix-blend-overlay"></div>
+        {/* Elementos temáticos adicionales */}
+        <div className="absolute top-10 right-1/3 w-32 h-32 rounded-full backdrop-blur-2xl animate-float opacity-30"
+             style={{
+               animationDelay: '3s',
+               background: 'radial-gradient(circle, rgba(245, 230, 211, 0.4) 0%, transparent 70%)'
+             }}>
+        </div>
+        <div className="absolute bottom-20 right-1/5 w-48 h-48 rounded-full backdrop-blur-2xl animate-float opacity-20"
+             style={{
+               animationDelay: '4s',
+               background: 'radial-gradient(circle, rgba(232, 90, 79, 0.2) 0%, transparent 70%)'
+             }}>
+        </div>
 
-        {/* Capa de difuminado para crear efecto glassmorfismo */}
-        <div className="absolute inset-0 backdrop-blur-[2px]"></div>
+        {/* Efecto de partículas de harina */}
+        <div className="flour-particles"></div>
+
+        {/* Capa de difuminado suave */}
+        <div className="absolute inset-0 backdrop-blur-[1px]"></div>
       </div>
 
       {/* Header con logo y título - Mejorado para responsividad */}
@@ -87,11 +116,15 @@ export default function Home() {
           {/* Título con tipografía mejorada - Responsivo */}
           <div className="text-center space-y-2 sm:space-y-4 w-full max-w-4xl px-2 sm:px-4">
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight">
-              <span className="block sm:inline text-white drop-shadow-[0_2px_2px_rgba(0,0,0,0.3)]">Los Pasteles</span>{" "}
-              <span className="block sm:inline text-[#ff69b4] drop-shadow-[0_2px_2px_rgba(0,0,0,0.3)]">de</span>{" "}
-              <span className="block sm:inline text-white drop-shadow-[0_2px_2px_rgba(0,0,0,0.3)]">Roxie</span>
+              <span className="block sm:inline drop-shadow-[0_3px_3px_rgba(139,69,19,0.4)]" 
+                    style={{color: '#8B4513'}}>Los Pasteles</span>{" "}
+              <span className="block sm:inline drop-shadow-[0_3px_3px_rgba(139,69,19,0.4)]" 
+                    style={{color: '#DC143C'}}>de</span>{" "}
+              <span className="block sm:inline drop-shadow-[0_3px_3px_rgba(139,69,19,0.4)]" 
+                    style={{color: '#E85A4F'}}>Roxie</span>
             </h1>
-            <p className="text-base sm:text-lg md:text-xl text-white/90 max-w-2xl mx-auto leading-relaxed drop-shadow-[0_1px_1px_rgba(0,0,0,0.3)]">
+            <p className="text-base sm:text-lg md:text-xl max-w-2xl mx-auto leading-relaxed drop-shadow-[0_2px_2px_rgba(139,69,19,0.3)] font-medium"
+               style={{color: '#8B4513'}}>
               Únete a nuestro programa de lealtad y disfruta de deliciosos pasteles, beneficios exclusivos y ofertas especiales
             </p>
           </div>
@@ -103,7 +136,8 @@ export default function Home() {
         <Card className="glass-card w-full backdrop-blur-xl bg-white/15 border border-white/20 shadow-2xl 
                         transform hover:shadow-2xl transition-all duration-300 rounded-xl sm:rounded-2xl">
           <CardHeader className="text-center p-4 sm:pb-2">
-            <CardTitle className="text-xl sm:text-2xl font-bold text-white">Registro</CardTitle>
+            <CardTitle className="text-xl sm:text-2xl font-bold drop-shadow-[0_1px_1px_rgba(245,230,211,0.8)]" 
+                       style={{color: '#8B4513'}}>Registro</CardTitle>
           </CardHeader>
           <CardContent className="p-4 sm:pt-4">
             <Form {...form}>
@@ -176,8 +210,11 @@ export default function Home() {
                 />
                 <Button
                   type="submit"
-                  className="w-full h-11 sm:h-12 text-base sm:text-lg font-medium bg-gradient-to-r from-[#0A85FF] to-[#10A852] hover:shadow-lg
-                             hover:shadow-[#0A85FF]/30 transform hover:scale-[1.02] transition-all duration-300 mt-2"
+                  className="w-full h-11 sm:h-12 text-base sm:text-lg font-semibold text-white transform hover:scale-[1.02] transition-all duration-300 mt-2 shimmer"
+                  style={{
+                    background: 'linear-gradient(135deg, #E85A4F 0%, #DC143C 100%)',
+                    boxShadow: '0 4px 16px rgba(232, 90, 79, 0.3), 0 2px 8px rgba(220, 20, 60, 0.2)'
+                  }}
                 >
                   Registrarse
                 </Button>

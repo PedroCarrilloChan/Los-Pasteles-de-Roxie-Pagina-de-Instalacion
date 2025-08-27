@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -9,104 +10,233 @@
 
   body {
     @apply font-sans antialiased text-foreground;
-    background: linear-gradient(135deg, #8e44ad, #e91e63, #ad1457);
-    background-size: 300% 300%;
-    animation: gradient 20s ease infinite;
+    background: linear-gradient(135deg, #F5E6D3 0%, #E8D5C4 25%, #D2B48C 50%, #E85A4F 75%, #DC143C 100%);
+    background-size: 400% 400%;
+    animation: bakeryGradient 15s ease infinite;
     min-height: 100vh;
     position: relative;
+    overflow-x: hidden;
   }
 
+  /* Fondo inmersivo 3D de pastelería */
   body::before {
     content: '';
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath opacity='.5' d='M96 95h4v1h-4v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9zm-1 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat;
+    z-index: -2;
+    background: 
+      /* Patrón de pastelitos flotantes */
+      radial-gradient(circle at 20% 30%, rgba(232, 90, 79, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 70%, rgba(220, 20, 60, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 40% 80%, rgba(245, 230, 211, 0.15) 0%, transparent 50%),
+      /* Efecto de harina flotante */
+      radial-gradient(circle at 60% 20%, rgba(255, 255, 255, 0.08) 0%, transparent 30%),
+      radial-gradient(circle at 90% 50%, rgba(255, 255, 255, 0.05) 0%, transparent 40%),
+      /* Base cremosa */
+      linear-gradient(45deg, #F5E6D3, #E8D5C4);
+  }
+
+  /* Elementos flotantes 3D de pastelería */
+  body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     z-index: -1;
+    pointer-events: none;
+    background-image: 
+      /* Cupcakes flotantes */
+      radial-gradient(ellipse 15px 20px at 15% 25%, #E85A4F 30%, transparent 70%),
+      radial-gradient(ellipse 10px 15px at 85% 35%, #DC143C 30%, transparent 70%),
+      radial-gradient(ellipse 12px 18px at 25% 75%, #D2691E 30%, transparent 70%),
+      radial-gradient(ellipse 8px 12px at 75% 85%, #E85A4F 30%, transparent 70%),
+      radial-gradient(ellipse 14px 19px at 45% 15%, #DC143C 30%, transparent 70%),
+      /* Ingredientes flotantes (gotitas de vainilla) */
+      radial-gradient(circle 3px at 60% 40%, rgba(245, 230, 211, 0.6) 30%, transparent 70%),
+      radial-gradient(circle 2px at 30% 60%, rgba(245, 230, 211, 0.4) 30%, transparent 70%),
+      radial-gradient(circle 4px at 80% 20%, rgba(245, 230, 211, 0.5) 30%, transparent 70%);
+    animation: floatingIngredients 20s ease-in-out infinite;
   }
 }
 
-@keyframes gradient {
+@keyframes bakeryGradient {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
 
-/* Glassmorphism styles */
+@keyframes floatingIngredients {
+  0%, 100% { 
+    transform: translateY(0px) rotate(0deg);
+    opacity: 0.6;
+  }
+  25% { 
+    transform: translateY(-15px) rotate(2deg);
+    opacity: 0.8;
+  }
+  50% { 
+    transform: translateY(-25px) rotate(-1deg);
+    opacity: 1;
+  }
+  75% { 
+    transform: translateY(-10px) rotate(1deg);
+    opacity: 0.7;
+  }
+}
+
+/* Glassmorphism mejorado con tema de pastelería */
 .glass-card {
-  @apply backdrop-blur-xl bg-white/10 border border-white/30 shadow-xl;
+  @apply backdrop-blur-xl border shadow-2xl;
+  background: linear-gradient(135deg, 
+    rgba(245, 230, 211, 0.25) 0%,
+    rgba(245, 230, 211, 0.15) 50%,
+    rgba(232, 90, 79, 0.1) 100%
+  );
+  border: 2px solid rgba(245, 230, 211, 0.3);
   box-shadow: 
-    0 8px 32px 0 rgba(31, 38, 135, 0.2),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.15);
+    0 8px 32px rgba(232, 90, 79, 0.15),
+    0 4px 16px rgba(220, 20, 60, 0.1),
+    inset 0 0 0 1px rgba(245, 230, 211, 0.2);
 }
 
 .card {
-  @apply backdrop-blur-xl bg-white/15 border border-white/20 shadow-xl;
+  @apply backdrop-blur-xl border shadow-xl;
+  background: linear-gradient(135deg, 
+    rgba(245, 230, 211, 0.2) 0%,
+    rgba(245, 230, 211, 0.12) 50%,
+    rgba(232, 90, 79, 0.08) 100%
+  );
+  border: 1px solid rgba(245, 230, 211, 0.25);
   box-shadow: 
-    0 8px 32px 0 rgba(31, 38, 135, 0.2),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.15);
+    0 6px 24px rgba(232, 90, 79, 0.12),
+    0 3px 12px rgba(220, 20, 60, 0.08),
+    inset 0 0 0 1px rgba(245, 230, 211, 0.15);
 }
 
+/* Elementos de formulario con tema pastelería */
 input {
-  @apply bg-white/40 backdrop-blur-md border-white/50 !important;
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05), 0 0 8px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.2);
+  @apply backdrop-blur-md !important;
+  background: linear-gradient(135deg, 
+    rgba(245, 230, 211, 0.6) 0%,
+    rgba(245, 230, 211, 0.4) 100%
+  ) !important;
+  border: 2px solid rgba(232, 90, 79, 0.3) !important;
+  box-shadow: 
+    inset 0 2px 4px rgba(139, 69, 19, 0.1), 
+    0 0 12px rgba(232, 90, 79, 0.2), 
+    0 0 0 1px rgba(245, 230, 211, 0.3);
+  color: #8B4513 !important;
+  font-weight: 600 !important;
+}
+
+input:focus {
+  border-color: rgba(220, 20, 60, 0.5) !important;
+  box-shadow: 
+    inset 0 2px 4px rgba(139, 69, 19, 0.15), 
+    0 0 16px rgba(220, 20, 60, 0.3), 
+    0 0 0 2px rgba(232, 90, 79, 0.2) !important;
 }
 
 button {
   @apply shadow-lg backdrop-blur-sm transition-all duration-300;
+  background: linear-gradient(135deg, #E85A4F 0%, #DC143C 100%);
+  border: 1px solid rgba(245, 230, 211, 0.3);
+  box-shadow: 
+    0 4px 16px rgba(232, 90, 79, 0.3),
+    0 2px 8px rgba(220, 20, 60, 0.2);
 }
 
 button:hover {
   @apply shadow-xl backdrop-blur-xl;
-  transform: translateY(-2px);
+  background: linear-gradient(135deg, #F06A5F 0%, #E6244C 100%);
+  transform: translateY(-3px);
+  box-shadow: 
+    0 8px 24px rgba(232, 90, 79, 0.4),
+    0 4px 12px rgba(220, 20, 60, 0.3);
 }
 
 button:active {
-  transform: translateY(1px);
+  transform: translateY(0px);
 }
 
+/* Animaciones mejoradas */
 .animate-float {
-  animation: float 6s ease-in-out infinite;
+  animation: cakeFloat 8s ease-in-out infinite;
 }
 
-@keyframes float {
-  0% { transform: translateY(0px) rotate(0deg); }
-  50% { transform: translateY(-15px) rotate(1deg); }
-  100% { transform: translateY(0px) rotate(0deg); }
+@keyframes cakeFloat {
+  0%, 100% { 
+    transform: translateY(0px) rotate(0deg);
+    filter: drop-shadow(0 4px 8px rgba(232, 90, 79, 0.2));
+  }
+  25% { 
+    transform: translateY(-20px) rotate(1deg);
+    filter: drop-shadow(0 8px 16px rgba(232, 90, 79, 0.3));
+  }
+  50% { 
+    transform: translateY(-30px) rotate(0deg);
+    filter: drop-shadow(0 12px 24px rgba(232, 90, 79, 0.4));
+  }
+  75% { 
+    transform: translateY(-15px) rotate(-1deg);
+    filter: drop-shadow(0 6px 12px rgba(232, 90, 79, 0.25));
+  }
 }
 
-/* Phone Input Styles */
+/* Phone Input con tema de pastelería */
 .phone-input .form-control {
-  @apply w-full border-input bg-white/40 backdrop-blur-md text-blue-900 font-medium;
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05), 0 0 8px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.2);
-  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.4);
+  @apply w-full border-input backdrop-blur-md font-semibold;
+  background: linear-gradient(135deg, 
+    rgba(245, 230, 211, 0.6) 0%,
+    rgba(245, 230, 211, 0.4) 100%
+  );
+  border: 2px solid rgba(232, 90, 79, 0.3);
+  color: #8B4513;
+  box-shadow: 
+    inset 0 2px 4px rgba(139, 69, 19, 0.1), 
+    0 0 8px rgba(232, 90, 79, 0.2), 
+    0 0 0 1px rgba(245, 230, 211, 0.3);
+  text-shadow: 0 1px 2px rgba(245, 230, 211, 0.8);
   letter-spacing: 0.02em;
 }
 
 .phone-input .flag-dropdown {
-  @apply border-input bg-white/10 backdrop-blur-md;
+  @apply border-input backdrop-blur-md;
+  background: linear-gradient(135deg, 
+    rgba(245, 230, 211, 0.5) 0%,
+    rgba(245, 230, 211, 0.3) 100%
+  );
+  border: 2px solid rgba(232, 90, 79, 0.3);
 }
 
 .phone-input .selected-flag:hover,
 .phone-input .selected-flag:focus {
-  @apply bg-white/20;
+  background: rgba(232, 90, 79, 0.15);
 }
 
 .phone-input .country-list {
-  @apply bg-white/90 backdrop-blur-xl border-white/30;
+  @apply backdrop-blur-xl;
+  background: linear-gradient(135deg, 
+    rgba(245, 230, 211, 0.95) 0%,
+    rgba(245, 230, 211, 0.9) 100%
+  );
+  border: 2px solid rgba(232, 90, 79, 0.2);
 }
 
 .phone-input .country-list .country:hover {
-  @apply bg-primary/20;
+  background: rgba(232, 90, 79, 0.15);
 }
 
 .phone-input .country-list .country.highlight {
-  @apply bg-primary/30;
+  background: rgba(220, 20, 60, 0.2);
 }
 
-/* Shimmering effect */
+/* Efecto de brillo de azúcar */
 .shimmer {
   position: relative;
   overflow: hidden;
@@ -122,57 +252,93 @@ button:active {
   background: linear-gradient(
     90deg, 
     transparent, 
-    rgba(255, 255, 255, 0.25), 
+    rgba(245, 230, 211, 0.4), 
+    rgba(255, 255, 255, 0.3),
+    rgba(245, 230, 211, 0.4),
     transparent
   );
-  animation: shimmer 2s infinite;
+  animation: sugarShimmer 3s infinite;
 }
 
-@keyframes shimmer {
+@keyframes sugarShimmer {
   0% { left: -100%; }
   100% { left: 200%; }
 }
 
-/* Form text color */
+/* Colores de texto con tema pastelería */
 .card {
-  color: white;
+  color: #8B4513;
 }
 
 .form-label {
-  @apply text-white/90 font-medium !important;
+  @apply font-semibold !important;
+  color: #8B4513 !important;
+  text-shadow: 0 1px 2px rgba(245, 230, 211, 0.8);
 }
 
 input::placeholder {
-  @apply text-gray-600/90 !important;
-  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.3);
+  @apply !important;
+  color: rgba(139, 69, 19, 0.6) !important;
+  text-shadow: 0 1px 2px rgba(245, 230, 211, 0.5);
 }
 
-input {
-  @apply text-blue-900 font-medium !important;
-  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.4);
-  letter-spacing: 0.02em;
-}
-
-/* Cards y elementos interactivos */
+/* Elementos interactivos mejorados */
 .glass-card:hover {
-  box-shadow: 0 10px 40px 0 rgba(31, 38, 135, 0.3);
+  box-shadow: 
+    0 12px 40px rgba(232, 90, 79, 0.2),
+    0 6px 20px rgba(220, 20, 60, 0.15),
+    inset 0 0 0 1px rgba(245, 230, 211, 0.3);
+  transform: translateY(-2px);
 }
 
-/* Custom scrollbar */
+/* Scrollbar personalizada con tema pastelería */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(245, 230, 211, 0.3);
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.3);
+  background: linear-gradient(135deg, #E85A4F, #DC143C);
   border-radius: 10px;
+  border: 2px solid rgba(245, 230, 211, 0.2);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.5);
+  background: linear-gradient(135deg, #F06A5F, #E6244C);
+}
+
+/* Efectos de partículas de harina */
+.flour-particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.flour-particles::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle 2px at 20% 30%, rgba(255, 255, 255, 0.3) 0%, transparent 50%),
+    radial-gradient(circle 1px at 80% 20%, rgba(255, 255, 255, 0.2) 0%, transparent 50%),
+    radial-gradient(circle 3px at 40% 70%, rgba(255, 255, 255, 0.25) 0%, transparent 50%),
+    radial-gradient(circle 2px at 90% 80%, rgba(255, 255, 255, 0.2) 0%, transparent 50%),
+    radial-gradient(circle 1px at 10% 90%, rgba(255, 255, 255, 0.3) 0%, transparent 50%);
+  animation: flourFalling 25s linear infinite;
+}
+
+@keyframes flourFalling {
+  0% { transform: translateY(-100px) rotate(0deg); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
 }

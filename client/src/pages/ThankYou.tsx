@@ -15,11 +15,23 @@ export default function ThankYou() {
     <div className="min-h-screen flex flex-col">
       {/* Header con efecto de vidrio - Mejorado para responsividad */}
       <div className="h-[30vh] sm:h-[35vh] md:h-[40vh] w-full relative overflow-hidden">
-        {/* Fondo con elementos decorativos */}
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-600 via-indigo-600 to-blue-700">
-          {/* Burbujas decorativas - Tamaños adaptables */}
-          <div className="absolute top-10 left-1/4 w-28 h-28 sm:w-40 sm:h-40 rounded-full bg-white/10 backdrop-blur-3xl animate-float" style={{animationDelay: '0.5s'}}></div>
-          <div className="absolute bottom-10 sm:bottom-20 right-1/5 w-36 h-36 sm:w-56 sm:h-56 rounded-full bg-white/10 backdrop-blur-3xl animate-float" style={{animationDelay: '1.2s'}}></div>
+        {/* Fondo con elementos decorativos de pastelería */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[#F5E6D3] via-[#E8D5C4] to-[#E85A4F]">
+          {/* Elementos decorativos temáticos - Tamaños adaptables */}
+          <div className="absolute top-10 left-1/4 w-28 h-28 sm:w-40 sm:h-40 rounded-full backdrop-blur-3xl animate-float opacity-20" 
+               style={{
+                 animationDelay: '0.5s',
+                 background: 'radial-gradient(circle, rgba(232, 90, 79, 0.3) 0%, transparent 70%)'
+               }}>
+          </div>
+          <div className="absolute bottom-10 sm:bottom-20 right-1/5 w-36 h-36 sm:w-56 sm:h-56 rounded-full backdrop-blur-3xl animate-float opacity-15" 
+               style={{
+                 animationDelay: '1.2s',
+                 background: 'radial-gradient(circle, rgba(220, 20, 60, 0.25) 0%, transparent 70%)'
+               }}>
+          </div>
+          {/* Partículas de harina */}
+          <div className="flour-particles"></div>
         </div>
         
         {/* Overlay de patrón */}
@@ -39,9 +51,11 @@ export default function ThankYou() {
           </div>
           
           <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold">
-            <span className="text-white drop-shadow-[0_2px_2px_rgba(0,0,0,0.3)]">¡Gracias!</span>
+            <span className="drop-shadow-[0_3px_3px_rgba(139,69,19,0.4)]" 
+                  style={{color: '#8B4513'}}>¡Gracias!</span>
           </h1>
-          <p className="text-base sm:text-xl md:text-2xl text-[#ff69b4] font-medium max-w-md text-center drop-shadow-[0_1px_1px_rgba(0,0,0,0.3)]">
+          <p className="text-base sm:text-xl md:text-2xl font-semibold max-w-md text-center drop-shadow-[0_2px_2px_rgba(139,69,19,0.3)]"
+             style={{color: '#DC143C'}}>
             Tu registro ha sido completado exitosamente
           </p>
         </div>
@@ -52,8 +66,10 @@ export default function ThankYou() {
         <Card className="glass-card w-full transform transition-all duration-300 shadow-2xl relative overflow-hidden rounded-xl sm:rounded-2xl">
           <CardHeader className="text-center p-4 pb-2">
             <CardTitle className="text-xl sm:text-2xl md:text-3xl font-bold">
-              <span className="text-white drop-shadow-[0_1px_1px_rgba(0,0,0,0.3)]">Smart</span>
-              <span className="text-[#10A852] drop-shadow-[0_1px_1px_rgba(0,0,0,0.3)]">Passes</span>
+              <span className="drop-shadow-[0_2px_2px_rgba(139,69,19,0.4)]" 
+                    style={{color: '#8B4513'}}>Smart</span>
+              <span className="drop-shadow-[0_2px_2px_rgba(139,69,19,0.4)]" 
+                    style={{color: '#E85A4F'}}>Passes</span>
             </CardTitle>
           </CardHeader>
           

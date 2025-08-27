@@ -9,10 +9,12 @@ export const config = {
   branding: {
     logoUrl: import.meta.env.VITE_COMPANY_LOGO_URL || "https://walletclub.s3.us-east-1.amazonaws.com/logoSmartPasses.jpg", // URL del logo de la empresa
     name: import.meta.env.VITE_COMPANY_NAME || "Los Pasteles de Roxie", // Nombre de la empresa actualizado
-    primaryColor: "hsl(328 100% 50%)", // Color primario (rosa vibrante)
-    secondaryColor: "hsl(340 82% 52%)", // Color secundario (rosa más profundo)
-    tertiaryColor: "hsl(320 60% 35%)", // Color terciario (rosa oscuro)
-    accentColor: "hsl(45 100% 80%)", // Color de acento (crema/amarillo suave)
+    primaryColor: "#E85A4F", // Color coral/rojo pastel del gorro chef
+    secondaryColor: "#DC143C", // Rosa intenso del texto Roxie
+    tertiaryColor: "#8B4513", // Marrón chocolate del texto principal
+    accentColor: "#F5E6D3", // Crema/beige del pelaje
+    creamColor: "#F5E6D3", // Color crema principal
+    goldenBrown: "#D2691E", // Marrón dorado del rodillo
     heroUrl: import.meta.env.VITE_HERO_IMAGE_URL, // URL de la imagen de fondo del hero
     bottomImageUrl: import.meta.env.VITE_BOTTOM_IMAGE_URL, // URL de la imagen inferior
   },
