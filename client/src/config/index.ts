@@ -7,7 +7,7 @@ export const config = {
   },
   // Company branding
   branding: {
-    logoUrl: import.meta.env.VITE_COMPANY_LOGO_URL || "https://walletclub.s3.us-east-1.amazonaws.com/logoSmartPasses.jpg", // URL del logo de la empresa
+    logoUrl: import.meta.env.VITE_COMPANY_LOGO_URL || "https://walletclub.s3.us-east-1.amazonaws.com/Los+Pasteles+de+Roxie+Logo+3d.png", // URL del logo de la empresa
     name: import.meta.env.VITE_COMPANY_NAME || "Los Pasteles de Roxie", // Nombre de la empresa actualizado
     primaryColor: "#E85A4F", // Color coral/rojo pastel del gorro chef
     secondaryColor: "#DC143C", // Rosa intenso del texto Roxie
