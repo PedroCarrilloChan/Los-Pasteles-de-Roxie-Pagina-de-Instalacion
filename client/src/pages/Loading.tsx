@@ -20,12 +20,12 @@ export default function Loading() {
         // Si es desktop, mostrar la página de selección
         navigate('/thank-you');
       }
-    }, 5000); // 5 segundos
+    }, 7000); // 7 segundos
 
     // Timer de respaldo en caso de que el video no se reproduzca
     const fallbackTimer = setTimeout(() => {
       navigate('/thank-you');
-    }, 8000); // 8 segundos máximo
+    }, 9000); // 9 segundos máximo
 
     return () => {
       clearTimeout(timer);

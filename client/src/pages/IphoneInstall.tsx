@@ -122,16 +122,7 @@ export default function IphoneInstall() {
 
   if (isDataLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center p-4">
-        {/* Fondo con efecto glassmorphism */}
-        <div className="absolute inset-0 w-full h-full z-0 bg-gradient-to-br from-blue-900 via-indigo-700 to-blue-900 overflow-hidden">
-          {/* Elementos decorativos flotantes */}
-          <div className="absolute top-1/4 left-1/5 w-48 h-48 sm:w-64 sm:h-64 rounded-full bg-blue-400/20 backdrop-blur-3xl animate-float" style={{animationDelay: '0s'}}></div>
-          <div className="absolute bottom-1/4 right-1/5 w-56 h-56 sm:w-80 sm:h-80 rounded-full bg-indigo-500/20 backdrop-blur-3xl animate-float" style={{animationDelay: '1s'}}></div>
-
-          {/* Capa de difuminado */}
-          <div className="absolute inset-0 backdrop-blur-[2px]"></div>
-        </div>
+      <div className="min-h-screen flex items-center justify-center p-4" style={{ background: 'linear-gradient(135deg, #DC143C 0%, #E85A4F 50%, #F5E6D3 100%)' }}>
         <div className="z-10">
           <Loader2 className="h-8 w-8 animate-spin text-white" />
         </div>
@@ -140,24 +131,30 @@ export default function IphoneInstall() {
   }
 
   return (
-    <div className="min-h-screen px-4 py-6 sm:px-6">
-      {/* Fondo con efecto glassmorphism */}
-      <div className="absolute inset-0 w-full h-full z-0 bg-gradient-to-br from-blue-900 via-indigo-700 to-blue-900 overflow-hidden">
-        {/* Elementos decorativos flotantes */}
-        <div className="absolute top-1/4 left-1/5 w-40 h-40 sm:w-64 sm:h-64 rounded-full bg-blue-400/20 backdrop-blur-3xl animate-float" style={{animationDelay: '0s'}}></div>
-        <div className="absolute bottom-1/3 right-1/4 w-48 h-48 sm:w-80 sm:h-80 rounded-full bg-indigo-500/20 backdrop-blur-3xl animate-float" style={{animationDelay: '1s'}}></div>
-
-        {/* Capa de difuminado */}
-        <div className="absolute inset-0 backdrop-blur-[2px]"></div>
+    <div className="min-h-screen px-4 py-6 sm:px-6" style={{ background: 'linear-gradient(135deg, #DC143C 0%, #E85A4F 50%, #F5E6D3 100%)' }}>
+      {/* Logo flotante en la esquina superior */}
+      <div className="fixed top-4 left-4 z-50">
+        <div className="glass-card w-12 h-12 sm:w-16 sm:h-16 rounded-full p-2 shadow-lg">
+          <img 
+            src="https://walletclub.s3.us-east-1.amazonaws.com/Los+Pasteles+de+Roxie+Logo+3d.png"
+            alt="Los Pasteles de Roxie" 
+            className="w-full h-full object-contain rounded-full"
+          />
+        </div>
       </div>
 
       {/* Tarjeta principal con glassmorphism mejorado */}
       <Card className="glass-card w-full max-w-md mx-auto border-none shadow-2xl drop-shadow-2xl 
                      transform transition-all duration-300 hover:shadow-3xl">
         <CardContent className="pt-6 space-y-5 sm:space-y-6 p-4 sm:p-6">
-          <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-center mb-4 text-white drop-shadow-[0_2px_2px_rgba(0,0,0,0.3)]">
-            Bienvenido {loyaltyData?.firstName}
-          </h1>
+          <div className="text-center mb-6">
+            <h1 className="text-xl sm:text-2xl md:text-3xl font-bold mb-2 text-white drop-shadow-[0_2px_2px_rgba(0,0,0,0.3)]">
+              Bienvenido {loyaltyData?.firstName}
+            </h1>
+            <p className="text-lg sm:text-xl font-semibold text-yellow-100 drop-shadow-md">
+              Los Pasteles de Roxie
+            </p>
+          </div>
 
           <div className="bg-white/20 backdrop-blur-md p-4 sm:p-6 rounded-lg space-y-4 sm:space-y-6 border border-white/30 shadow-lg">
             <div className="space-y-4 sm:space-y-6">
