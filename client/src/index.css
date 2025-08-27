@@ -1,5 +1,3 @@
-
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -11,15 +9,15 @@
 
   body {
     @apply font-sans antialiased text-foreground;
-    background: linear-gradient(135deg, #FDF8F3 0%, #F5E6D3 20%, #E8D5C4 40%, #DCC4B8 60%, #D2B48C 80%, #C8A882 100%);
+    background: linear-gradient(135deg, #F5E6D3 0%, #E8D5C4 25%, #D2B48C 50%, #E85A4F 75%, #DC143C 100%);
     background-size: 400% 400%;
-    animation: subtleBakeryGradient 20s ease infinite;
+    animation: bakeryGradient 15s ease infinite;
     min-height: 100vh;
     position: relative;
     overflow-x: hidden;
   }
 
-  /* Nuevo fondo inmersivo sutil con elementos de pastelería flotantes */
+  /* Fondo inmersivo 3D de pastelería mejorado */
   body::before {
     content: '';
     position: fixed;
@@ -29,19 +27,18 @@
     height: 100%;
     z-index: -3;
     background: 
-      /* Patrones sutiles de ingredientes de repostería */
-      radial-gradient(circle at 15% 25%, rgba(245, 230, 211, 0.08) 0%, transparent 40%),
-      radial-gradient(circle at 85% 35%, rgba(232, 90, 79, 0.06) 0%, transparent 45%),
-      radial-gradient(circle at 45% 75%, rgba(210, 105, 30, 0.05) 0%, transparent 50%),
-      radial-gradient(circle at 70% 15%, rgba(220, 20, 60, 0.04) 0%, transparent 35%),
-      /* Textura de harina muy sutil */
-      radial-gradient(circle at 25% 60%, rgba(255, 255, 255, 0.03) 0%, transparent 30%),
-      radial-gradient(circle at 90% 80%, rgba(255, 255, 255, 0.02) 0%, transparent 25%),
-      /* Base cremosa y suave */
-      linear-gradient(135deg, #FDF8F3 0%, #F5E6D3 25%, #E8D5C4 50%, #DCC4B8 75%, #D2B48C 100%);
+      /* Patrón de pastelitos flotantes con más contraste */
+      radial-gradient(circle at 20% 30%, rgba(232, 90, 79, 0.15) 0%, transparent 60%),
+      radial-gradient(circle at 80% 70%, rgba(220, 20, 60, 0.12) 0%, transparent 55%),
+      radial-gradient(circle at 40% 80%, rgba(245, 230, 211, 0.2) 0%, transparent 65%),
+      /* Efecto de harina flotante mejorado */
+      radial-gradient(circle at 60% 20%, rgba(255, 255, 255, 0.12) 0%, transparent 35%),
+      radial-gradient(circle at 90% 50%, rgba(255, 255, 255, 0.08) 0%, transparent 45%),
+      /* Base cremosa con más profundidad */
+      linear-gradient(135deg, #F5E6D3 0%, #E8D5C4 30%, #D2B48C 70%, #E85A4F 100%);
   }
 
-  /* Capa de elementos temáticos sutiles flotantes */
+  /* Capa de elementos temáticos de pastelería */
   body::after {
     content: '';
     position: fixed;
@@ -52,76 +49,93 @@
     z-index: -2;
     pointer-events: none;
     background-image: 
-      /* Cupcakes miniatura muy sutiles */
-      radial-gradient(ellipse 12px 16px at 18% 22%, rgba(232, 90, 79, 0.04) 25%, transparent 70%),
-      radial-gradient(ellipse 14px 18px at 82% 28%, rgba(220, 20, 60, 0.03) 20%, transparent 75%),
-      radial-gradient(ellipse 10px 14px at 35% 82%, rgba(210, 105, 30, 0.05) 30%, transparent 65%),
-      radial-gradient(ellipse 16px 20px at 75% 85%, rgba(232, 90, 79, 0.03) 22%, transparent 80%),
-      
-      /* Huesitos para perros muy sutiles */
-      radial-gradient(ellipse 8px 4px at 65% 18%, rgba(245, 230, 211, 0.06) 35%, transparent 80%),
-      radial-gradient(ellipse 6px 3px at 25% 88%, rgba(245, 230, 211, 0.05) 40%, transparent 75%),
-      radial-gradient(ellipse 10px 5px at 85% 65%, rgba(245, 230, 211, 0.07) 30%, transparent 85%),
-      
-      /* Corazones temáticos sutiles */
-      radial-gradient(ellipse 8px 6px at 55% 35%, rgba(220, 20, 60, 0.04) 40%, transparent 85%),
-      radial-gradient(ellipse 6px 5px at 15% 65%, rgba(232, 90, 79, 0.03) 45%, transparent 80%),
-      
-      /* Gotitas de ingredientes (vainilla, chocolate) */
-      radial-gradient(circle 3px at 40% 45%, rgba(245, 230, 211, 0.05) 30%, transparent 70%),
-      radial-gradient(circle 2px at 75% 25%, rgba(139, 69, 19, 0.04) 35%, transparent 65%),
-      radial-gradient(circle 4px at 20% 70%, rgba(245, 230, 211, 0.06) 25%, transparent 75%),
-      
-      /* Elementos decorativos tipo confeti */
-      radial-gradient(circle 1px at 60% 40%, rgba(232, 90, 79, 0.03) 50%, transparent 80%),
-      radial-gradient(circle 1px at 30% 60%, rgba(220, 20, 60, 0.02) 45%, transparent 75%),
-      radial-gradient(circle 2px at 80% 50%, rgba(210, 105, 30, 0.04) 40%, transparent 70%);
-    animation: subtleFloatingIngredients 30s ease-in-out infinite;
-    filter: blur(0.5px);
+      /* Cupcakes 3D con sombras */
+      radial-gradient(ellipse 18px 24px at 12% 20%, #E85A4F 20%, rgba(232, 90, 79, 0.6) 35%, transparent 80%),
+      radial-gradient(ellipse 22px 28px at 88% 30%, #DC143C 18%, rgba(220, 20, 60, 0.5) 40%, transparent 85%),
+      radial-gradient(ellipse 16px 22px at 25% 78%, #D2691E 22%, rgba(210, 105, 30, 0.4) 38%, transparent 75%),
+      radial-gradient(ellipse 14px 20px at 78% 88%, #E85A4F 25%, rgba(232, 90, 79, 0.3) 45%, transparent 78%),
+      radial-gradient(ellipse 20px 26px at 45% 12%, #DC143C 20%, rgba(220, 20, 60, 0.4) 42%, transparent 82%),
+
+      /* Huesitos para perros */
+      radial-gradient(ellipse 12px 6px at 65% 15%, #F5E6D3 30%, rgba(245, 230, 211, 0.7) 50%, transparent 85%),
+      radial-gradient(ellipse 10px 5px at 35% 85%, #F5E6D3 35%, rgba(245, 230, 211, 0.6) 55%, transparent 80%),
+      radial-gradient(ellipse 14px 7px at 85% 65%, #F5E6D3 28%, rgba(245, 230, 211, 0.8) 48%, transparent 88%),
+
+      /* Pastelitos miniatura */
+      radial-gradient(ellipse 8px 12px at 55% 35%, #E85A4F 40%, rgba(232, 90, 79, 0.5) 60%, transparent 90%),
+      radial-gradient(ellipse 6px 10px at 20% 65%, #DC143C 45%, rgba(220, 20, 60, 0.4) 65%, transparent 88%),
+      radial-gradient(ellipse 10px 14px at 90% 45%, #D2691E 38%, rgba(210, 105, 30, 0.6) 58%, transparent 85%),
+
+      /* Ingredientes flotantes (gotitas de vainilla y chocolate) */
+      radial-gradient(circle 4px at 60% 40%, rgba(245, 230, 211, 0.8) 25%, transparent 75%),
+      radial-gradient(circle 3px at 30% 60%, rgba(139, 69, 19, 0.6) 30%, transparent 70%),
+      radial-gradient(circle 5px at 80% 25%, rgba(245, 230, 211, 0.7) 28%, transparent 72%),
+      radial-gradient(circle 2px at 15% 40%, rgba(139, 69, 19, 0.5) 35%, transparent 68%);
+    animation: floatingIngredients 25s ease-in-out infinite;
+    filter: drop-shadow(0 2px 4px rgba(139, 69, 19, 0.2));
   }
 }
 
-@keyframes subtleBakeryGradient {
+@keyframes bakeryGradient {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
 
-@keyframes subtleFloatingIngredients {
+@keyframes floatingIngredients {
   0%, 100% { 
     transform: translateY(0px) rotate(0deg) scale(1);
-    opacity: 0.6;
+    opacity: 0.7;
   }
-  25% { 
-    transform: translateY(-8px) rotate(1deg) scale(1.02);
-    opacity: 0.8;
+  20% { 
+    transform: translateY(-12px) rotate(3deg) scale(1.05);
+    opacity: 0.9;
   }
-  50% { 
-    transform: translateY(-15px) rotate(-1deg) scale(0.98);
+  40% { 
+    transform: translateY(-25px) rotate(-2deg) scale(0.95);
     opacity: 1;
   }
-  75% { 
-    transform: translateY(-12px) rotate(0.5deg) scale(1.01);
-    opacity: 0.9;
+  60% { 
+    transform: translateY(-18px) rotate(1deg) scale(1.02);
+    opacity: 0.95;
+  }
+  80% { 
+    transform: translateY(-8px) rotate(-1deg) scale(0.98);
+    opacity: 0.8;
   }
 }
 
-/* Glassmorphism mejorado con tema pastelería sutil */
+/* Nueva animación para elementos temáticos */
+@keyframes bakeryElementsFloat {
+  0%, 100% { 
+    transform: translateY(0px) rotate(0deg) scale(1);
+    filter: drop-shadow(0 2px 4px rgba(139, 69, 19, 0.2));
+  }
+  33% { 
+    transform: translateY(-20px) rotate(2deg) scale(1.1);
+    filter: drop-shadow(0 6px 12px rgba(139, 69, 19, 0.3));
+  }
+  66% { 
+    transform: translateY(-35px) rotate(-1deg) scale(0.9);
+    filter: drop-shadow(0 8px 16px rgba(139, 69, 19, 0.4));
+  }
+}
+
+/* Glassmorphism mejorado con tema de pastelería y mayor contraste */
 .glass-card {
   @apply backdrop-blur-xl border shadow-2xl;
   background: linear-gradient(135deg, 
-    rgba(255, 255, 255, 0.25) 0%,
-    rgba(245, 230, 211, 0.20) 30%,
-    rgba(232, 90, 79, 0.08) 70%,
-    rgba(220, 20, 60, 0.05) 100%
+    rgba(245, 230, 211, 0.35) 0%,
+    rgba(245, 230, 211, 0.25) 50%,
+    rgba(232, 90, 79, 0.15) 100%
   );
-  border: 1.5px solid rgba(255, 255, 255, 0.3);
+  border: 2px solid rgba(245, 230, 211, 0.4);
   box-shadow: 
-    0 20px 50px rgba(139, 69, 19, 0.15),
-    0 12px 30px rgba(232, 90, 79, 0.12),
-    0 6px 20px rgba(220, 20, 60, 0.08),
-    inset 0 1px 0 rgba(255, 255, 255, 0.4),
-    inset 0 0 0 1px rgba(245, 230, 211, 0.2);
+    0 12px 40px rgba(139, 69, 19, 0.25),
+    0 8px 32px rgba(232, 90, 79, 0.2),
+    0 4px 16px rgba(220, 20, 60, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3),
+    inset 0 0 0 1px rgba(245, 230, 211, 0.3);
   position: relative;
 }
 
@@ -135,7 +149,7 @@
   background: linear-gradient(135deg, 
     rgba(255, 255, 255, 0.1) 0%,
     transparent 50%,
-    rgba(232, 90, 79, 0.03) 100%
+    rgba(232, 90, 79, 0.05) 100%
   );
   border-radius: inherit;
   pointer-events: none;
@@ -144,58 +158,58 @@
 .card {
   @apply backdrop-blur-xl border shadow-xl;
   background: linear-gradient(135deg, 
-    rgba(255, 255, 255, 0.2) 0%,
-    rgba(245, 230, 211, 0.15) 50%,
-    rgba(232, 90, 79, 0.06) 100%
+    rgba(245, 230, 211, 0.3) 0%,
+    rgba(245, 230, 211, 0.2) 50%,
+    rgba(232, 90, 79, 0.12) 100%
   );
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  border: 1px solid rgba(245, 230, 211, 0.35);
   box-shadow: 
-    0 15px 40px rgba(139, 69, 19, 0.12),
-    0 8px 25px rgba(232, 90, 79, 0.1),
-    0 4px 15px rgba(220, 20, 60, 0.06),
-    inset 0 1px 0 rgba(255, 255, 255, 0.3),
-    inset 0 0 0 1px rgba(245, 230, 211, 0.15);
+    0 8px 32px rgba(139, 69, 19, 0.2),
+    0 6px 24px rgba(232, 90, 79, 0.15),
+    0 3px 12px rgba(220, 20, 60, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    inset 0 0 0 1px rgba(245, 230, 211, 0.25);
 }
 
-/* Elementos de formulario con tema pastelería sutil */
+/* Elementos de formulario con tema pastelería y mayor contraste */
 input {
   @apply backdrop-blur-md !important;
   background: linear-gradient(135deg, 
-    rgba(255, 255, 255, 0.7) 0%,
-    rgba(245, 230, 211, 0.5) 100%
+    rgba(245, 230, 211, 0.75) 0%,
+    rgba(245, 230, 211, 0.6) 100%
   ) !important;
-  border: 2px solid rgba(232, 90, 79, 0.3) !important;
+  border: 2px solid rgba(232, 90, 79, 0.4) !important;
   box-shadow: 
-    inset 0 2px 4px rgba(139, 69, 19, 0.08), 
-    0 2px 8px rgba(139, 69, 19, 0.06),
-    0 0 15px rgba(232, 90, 79, 0.12), 
-    0 0 0 1px rgba(255, 255, 255, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+    inset 0 3px 6px rgba(139, 69, 19, 0.15), 
+    0 2px 8px rgba(139, 69, 19, 0.1),
+    0 0 12px rgba(232, 90, 79, 0.2), 
+    0 0 0 1px rgba(245, 230, 211, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
   color: #8B4513 !important;
   font-weight: 600 !important;
-  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+  text-shadow: 0 1px 2px rgba(245, 230, 211, 0.8);
 }
 
 input:focus {
-  border-color: rgba(220, 20, 60, 0.5) !important;
+  border-color: rgba(220, 20, 60, 0.6) !important;
   box-shadow: 
-    inset 0 2px 4px rgba(139, 69, 19, 0.1), 
-    0 4px 12px rgba(139, 69, 19, 0.08),
-    0 0 25px rgba(220, 20, 60, 0.25), 
-    0 0 0 2px rgba(232, 90, 79, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.5) !important;
+    inset 0 3px 6px rgba(139, 69, 19, 0.2), 
+    0 4px 12px rgba(139, 69, 19, 0.15),
+    0 0 20px rgba(220, 20, 60, 0.4), 
+    0 0 0 2px rgba(232, 90, 79, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4) !important;
 }
 
 button {
   @apply shadow-lg backdrop-blur-sm transition-all duration-300;
   background: linear-gradient(135deg, #E85A4F 0%, #DC143C 100%);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(245, 230, 211, 0.4);
   box-shadow: 
-    0 8px 25px rgba(139, 69, 19, 0.2),
-    0 4px 15px rgba(232, 90, 79, 0.3),
-    0 2px 10px rgba(220, 20, 60, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.3),
-    inset 0 -1px 0 rgba(139, 69, 19, 0.15);
+    0 6px 20px rgba(139, 69, 19, 0.3),
+    0 4px 16px rgba(232, 90, 79, 0.4),
+    0 2px 8px rgba(220, 20, 60, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    inset 0 -1px 0 rgba(139, 69, 19, 0.2);
   position: relative;
   overflow: hidden;
 }
@@ -214,13 +228,13 @@ button::before {
 button:hover {
   @apply shadow-xl backdrop-blur-xl;
   background: linear-gradient(135deg, #F06A5F 0%, #E6244C 100%);
-  transform: translateY(-3px);
+  transform: translateY(-4px);
   box-shadow: 
-    0 12px 35px rgba(139, 69, 19, 0.25),
-    0 8px 25px rgba(232, 90, 79, 0.4),
-    0 4px 15px rgba(220, 20, 60, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.4),
-    inset 0 -1px 0 rgba(139, 69, 19, 0.2);
+    0 10px 30px rgba(139, 69, 19, 0.4),
+    0 8px 24px rgba(232, 90, 79, 0.5),
+    0 4px 12px rgba(220, 20, 60, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3),
+    inset 0 -1px 0 rgba(139, 69, 19, 0.3);
 }
 
 button:hover::before {
@@ -231,78 +245,79 @@ button:active {
   transform: translateY(0px);
 }
 
-/* Animaciones suaves y elegantes */
+/* Animaciones mejoradas */
 .animate-float {
-  animation: gentleFloat 10s ease-in-out infinite;
+  animation: cakeFloat 8s ease-in-out infinite;
 }
 
-@keyframes gentleFloat {
+@keyframes cakeFloat {
   0%, 100% { 
     transform: translateY(0px) rotate(0deg);
-    filter: drop-shadow(0 4px 8px rgba(232, 90, 79, 0.1));
+    filter: drop-shadow(0 4px 8px rgba(232, 90, 79, 0.2));
   }
   25% { 
-    transform: translateY(-12px) rotate(0.5deg);
-    filter: drop-shadow(0 8px 16px rgba(232, 90, 79, 0.15));
+    transform: translateY(-20px) rotate(1deg);
+    filter: drop-shadow(0 8px 16px rgba(232, 90, 79, 0.3));
   }
   50% { 
-    transform: translateY(-20px) rotate(0deg);
-    filter: drop-shadow(0 12px 24px rgba(232, 90, 79, 0.2));
+    transform: translateY(-30px) rotate(0deg);
+    filter: drop-shadow(0 12px 24px rgba(232, 90, 79, 0.4));
   }
   75% { 
-    transform: translateY(-8px) rotate(-0.5deg);
-    filter: drop-shadow(0 6px 12px rgba(232, 90, 79, 0.12));
+    transform: translateY(-15px) rotate(-1deg);
+    filter: drop-shadow(0 6px 12px rgba(232, 90, 79, 0.25));
   }
 }
 
-/* Phone Input con tema sutil */
+/* Phone Input con tema de pastelería */
 .phone-input .form-control {
   @apply w-full border-input backdrop-blur-md font-semibold;
   background: linear-gradient(135deg, 
-    rgba(255, 255, 255, 0.6) 0%,
+    rgba(245, 230, 211, 0.6) 0%,
     rgba(245, 230, 211, 0.4) 100%
   );
-  border: 2px solid rgba(232, 90, 79, 0.25);
+  border: 2px solid rgba(232, 90, 79, 0.3);
   color: #8B4513;
   box-shadow: 
-    inset 0 2px 4px rgba(139, 69, 19, 0.05), 
-    0 0 12px rgba(232, 90, 79, 0.15), 
-    0 0 0 1px rgba(255, 255, 255, 0.25);
-  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+    inset 0 2px 4px rgba(139, 69, 19, 0.1), 
+    0 0 8px rgba(232, 90, 79, 0.2), 
+    0 0 0 1px rgba(245, 230, 211, 0.3);
+  text-shadow: 0 1px 2px rgba(245, 230, 211, 0.8);
+  letter-spacing: 0.02em;
 }
 
 .phone-input .flag-dropdown {
   @apply border-input backdrop-blur-md;
   background: linear-gradient(135deg, 
-    rgba(255, 255, 255, 0.5) 0%,
+    rgba(245, 230, 211, 0.5) 0%,
     rgba(245, 230, 211, 0.3) 100%
   );
-  border: 2px solid rgba(232, 90, 79, 0.25);
+  border: 2px solid rgba(232, 90, 79, 0.3);
 }
 
 .phone-input .selected-flag:hover,
 .phone-input .selected-flag:focus {
-  background: rgba(232, 90, 79, 0.1);
+  background: rgba(232, 90, 79, 0.15);
 }
 
 .phone-input .country-list {
   @apply backdrop-blur-xl;
   background: linear-gradient(135deg, 
-    rgba(255, 255, 255, 0.95) 0%,
+    rgba(245, 230, 211, 0.95) 0%,
     rgba(245, 230, 211, 0.9) 100%
   );
-  border: 2px solid rgba(232, 90, 79, 0.15);
+  border: 2px solid rgba(232, 90, 79, 0.2);
 }
 
 .phone-input .country-list .country:hover {
-  background: rgba(232, 90, 79, 0.1);
+  background: rgba(232, 90, 79, 0.15);
 }
 
 .phone-input .country-list .country.highlight {
-  background: rgba(220, 20, 60, 0.15);
+  background: rgba(220, 20, 60, 0.2);
 }
 
-/* Efecto shimmer suave */
+/* Efecto de brillo de azúcar */
 .shimmer {
   position: relative;
   overflow: hidden;
@@ -318,20 +333,20 @@ button:active {
   background: linear-gradient(
     90deg, 
     transparent, 
-    rgba(255, 255, 255, 0.3), 
-    rgba(245, 230, 211, 0.2),
+    rgba(245, 230, 211, 0.4), 
     rgba(255, 255, 255, 0.3),
+    rgba(245, 230, 211, 0.4),
     transparent
   );
-  animation: gentleShimmer 4s infinite;
+  animation: sugarShimmer 3s infinite;
 }
 
-@keyframes gentleShimmer {
+@keyframes sugarShimmer {
   0% { left: -100%; }
   100% { left: 200%; }
 }
 
-/* Colores de texto refinados */
+/* Colores de texto con tema pastelería */
 .card {
   color: #8B4513;
 }
@@ -339,53 +354,98 @@ button:active {
 .form-label {
   @apply font-semibold !important;
   color: #8B4513 !important;
-  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+  text-shadow: 0 1px 2px rgba(245, 230, 211, 0.8);
 }
 
 input::placeholder {
   @apply !important;
-  color: rgba(139, 69, 19, 0.5) !important;
-  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
+  color: rgba(139, 69, 19, 0.6) !important;
+  text-shadow: 0 1px 2px rgba(245, 230, 211, 0.5);
 }
 
-/* Scrollbar personalizada elegante */
+/* Elementos interactivos mejorados */
+.glass-card:hover {
+  box-shadow: 
+    0 12px 40px rgba(232, 90, 79, 0.2),
+    0 6px 20px rgba(220, 20, 60, 0.15),
+    inset 0 0 0 1px rgba(245, 230, 211, 0.3);
+  transform: translateY(-2px);
+}
+
+/* Scrollbar personalizada con tema pastelería */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(245, 230, 211, 0.2);
+  background: rgba(245, 230, 211, 0.3);
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, rgba(232, 90, 79, 0.6), rgba(220, 20, 60, 0.6));
+  background: linear-gradient(135deg, #E85A4F, #DC143C);
   border-radius: 10px;
-  border: 2px solid rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(245, 230, 211, 0.2);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(135deg, rgba(232, 90, 79, 0.8), rgba(220, 20, 60, 0.8));
+  background: linear-gradient(135deg, #F06A5F, #E6244C);
 }
 
-/* Video container para la página de loading */
-.video-container {
+/* Capa adicional de elementos temáticos flotantes */
+.bakery-elements {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 10;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, #FDF8F3 0%, #F5E6D3 25%, #E8D5C4 50%, #DCC4B8 75%, #D2B48C 100%);
+  pointer-events: none;
+  z-index: -1;
+  background-image:
+    /* Cupcakes grandes decorativos */
+    radial-gradient(ellipse 25px 35px at 8% 15%, #E85A4F 15%, rgba(232, 90, 79, 0.4) 35%, transparent 70%),
+    radial-gradient(ellipse 30px 40px at 92% 25%, #DC143C 12%, rgba(220, 20, 60, 0.3) 40%, transparent 75%),
+    radial-gradient(ellipse 28px 38px at 15% 85%, #D2691E 18%, rgba(210, 105, 30, 0.35) 38%, transparent 72%),
+
+    /* Huesitos más detallados */
+    radial-gradient(ellipse 18px 8px at 70% 10%, #F5E6D3 25%, rgba(245, 230, 211, 0.6) 45%, transparent 80%),
+    radial-gradient(ellipse 16px 7px at 25% 90%, #F5E6D3 30%, rgba(245, 230, 211, 0.7) 50%, transparent 85%),
+    radial-gradient(ellipse 20px 9px at 88% 70%, #F5E6D3 22%, rgba(245, 230, 211, 0.8) 42%, transparent 82%),
+
+    /* Corazones temáticos */
+    radial-gradient(ellipse 12px 10px at 45% 20%, #DC143C 35%, rgba(220, 20, 60, 0.5) 55%, transparent 85%),
+    radial-gradient(ellipse 10px 8px at 75% 80%, #E85A4F 40%, rgba(232, 90, 79, 0.4) 60%, transparent 80%);
+  animation: bakeryElementsFloat 30s ease-in-out infinite;
 }
 
-.video-container video {
-  max-width: 90%;
-  max-height: 90%;
-  border-radius: 20px;
-  box-shadow: 0 25px 60px rgba(139, 69, 19, 0.3);
+/* Efectos de partículas de harina mejorados */
+.flour-particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
 }
 
+.flour-particles::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle 2px at 20% 30%, rgba(255, 255, 255, 0.3) 0%, transparent 50%),
+    radial-gradient(circle 1px at 80% 20%, rgba(255, 255, 255, 0.2) 0%, transparent 50%),
+    radial-gradient(circle 3px at 40% 70%, rgba(255, 255, 255, 0.25) 0%, transparent 50%),
+    radial-gradient(circle 2px at 90% 80%, rgba(255, 255, 255, 0.2) 0%, transparent 50%),
+    radial-gradient(circle 1px at 10% 90%, rgba(255, 255, 255, 0.3) 0%, transparent 50%);
+  animation: flourFalling 25s linear infinite;
+}
+
+@keyframes flourFalling {
+  0% { transform: translateY(-100px) rotate(0deg); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+}
