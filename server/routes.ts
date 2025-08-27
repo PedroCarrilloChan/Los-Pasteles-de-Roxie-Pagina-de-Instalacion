@@ -10,7 +10,7 @@ const SERVER_CONFIG = {
     baseUrl: "https://pass.smartpasses.io/api/v1",
   },
   externalServices: {
-    androidInstallUrl: process.env.ANDROID_INSTALL_URL || "https://android-instalacion-automatica-onlinemidafilia.replit.app/generateLink",
+    androidInstallUrl: process.env.ANDROID_INSTALL_URL || "https://linkandroid.smartpasses.io/generateLink",
   }
 };
 

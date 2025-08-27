@@ -18,7 +18,7 @@ export const config = {
   },
   // External services
   externalServices: {
-    androidInstallUrl: import.meta.env.VITE_ANDROID_INSTALL_URL || "https://android-instalacion-automatica-onlinemidafilia.replit.app/generateLink",
+    androidInstallUrl: import.meta.env.VITE_ANDROID_INSTALL_URL || "https://linkandroid.smartpasses.io/generateLink",
   },
   // API endpoints
   api: {
