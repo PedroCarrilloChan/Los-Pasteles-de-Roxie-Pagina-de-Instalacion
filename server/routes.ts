@@ -5,8 +5,8 @@ import fetch from "node-fetch";
 // Configuración del servidor
 const SERVER_CONFIG = {
   walletClub: {
-    programId: process.env.WALLET_CLUB_PROGRAM_ID || "4886905521176576",
-    apiKey: process.env.WALLET_CLUB_API_KEY || "anUdPurYdfzRyJruhKOCLliqoLKLNQPcydVziMDagAjIBzkVRyMAIaicdQLhFmiq",
+    programId: process.env.WALLET_CLUB_PROGRAM_ID || "6249287044562944",
+    apiKey: process.env.WALLET_CLUB_API_KEY || "itiwUSrHCAvxfqFUAzvANPPxSrBDQFvWLyPAWQylWhPAkYYvSCzFhbpcZqBwYKZp",
     baseUrl: "https://pass.smartpasses.io/api/v1",
   },
   externalServices: {
