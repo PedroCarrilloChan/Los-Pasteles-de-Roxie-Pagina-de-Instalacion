@@ -58,41 +58,49 @@ export default function Home() {
 
   return (
     <div className="min-h-screen w-full relative flex flex-col">
-      {/* Fondo inmersivo 3D de pastelería */}
+      {/* Fondo inmersivo 3D de pastelería mejorado */}
       <div className="absolute inset-0 w-full h-full z-0 overflow-hidden">
-        {/* Elementos decorativos de pastelería flotantes */}
-        <div className="absolute top-1/4 left-1/5 w-64 h-64 rounded-full backdrop-blur-3xl animate-float opacity-20"
+        {/* Elementos decorativos de pastelería flotantes con más sombras */}
+        <div className="absolute top-1/4 left-1/5 w-64 h-64 rounded-full backdrop-blur-3xl animate-float opacity-25"
              style={{
                animationDelay: '0s',
-               background: 'radial-gradient(circle, rgba(232, 90, 79, 0.3) 0%, rgba(245, 230, 211, 0.2) 50%, transparent 100%)'
+               background: 'radial-gradient(circle, rgba(232, 90, 79, 0.4) 0%, rgba(245, 230, 211, 0.25) 50%, transparent 100%)',
+               filter: 'drop-shadow(0 8px 16px rgba(139, 69, 19, 0.3))'
              }}>
         </div>
-        <div className="absolute top-2/3 right-1/4 w-96 h-96 rounded-full backdrop-blur-3xl animate-float opacity-15"
+        <div className="absolute top-2/3 right-1/4 w-96 h-96 rounded-full backdrop-blur-3xl animate-float opacity-20"
              style={{
                animationDelay: '2s',
-               background: 'radial-gradient(circle, rgba(220, 20, 60, 0.25) 0%, rgba(210, 105, 30, 0.15) 50%, transparent 100%)'
+               background: 'radial-gradient(circle, rgba(220, 20, 60, 0.35) 0%, rgba(210, 105, 30, 0.2) 50%, transparent 100%)',
+               filter: 'drop-shadow(0 12px 24px rgba(139, 69, 19, 0.25))'
              }}>
         </div>
-        <div className="absolute bottom-1/3 left-1/3 w-72 h-72 rounded-full backdrop-blur-3xl animate-float opacity-25"
+        <div className="absolute bottom-1/3 left-1/3 w-72 h-72 rounded-full backdrop-blur-3xl animate-float opacity-30"
              style={{
                animationDelay: '1s',
-               background: 'radial-gradient(circle, rgba(210, 105, 30, 0.3) 0%, rgba(245, 230, 211, 0.2) 50%, transparent 100%)'
+               background: 'radial-gradient(circle, rgba(210, 105, 30, 0.4) 0%, rgba(245, 230, 211, 0.25) 50%, transparent 100%)',
+               filter: 'drop-shadow(0 10px 20px rgba(139, 69, 19, 0.28))'
              }}>
         </div>
 
-        {/* Elementos temáticos adicionales */}
-        <div className="absolute top-10 right-1/3 w-32 h-32 rounded-full backdrop-blur-2xl animate-float opacity-30"
+        {/* Elementos temáticos adicionales con sombras */}
+        <div className="absolute top-10 right-1/3 w-32 h-32 rounded-full backdrop-blur-2xl animate-float opacity-35"
              style={{
                animationDelay: '3s',
-               background: 'radial-gradient(circle, rgba(245, 230, 211, 0.4) 0%, transparent 70%)'
+               background: 'radial-gradient(circle, rgba(245, 230, 211, 0.5) 0%, transparent 70%)',
+               filter: 'drop-shadow(0 6px 12px rgba(139, 69, 19, 0.2))'
              }}>
         </div>
-        <div className="absolute bottom-20 right-1/5 w-48 h-48 rounded-full backdrop-blur-2xl animate-float opacity-20"
+        <div className="absolute bottom-20 right-1/5 w-48 h-48 rounded-full backdrop-blur-2xl animate-float opacity-25"
              style={{
                animationDelay: '4s',
-               background: 'radial-gradient(circle, rgba(232, 90, 79, 0.2) 0%, transparent 70%)'
+               background: 'radial-gradient(circle, rgba(232, 90, 79, 0.3) 0%, transparent 70%)',
+               filter: 'drop-shadow(0 8px 16px rgba(139, 69, 19, 0.22))'
              }}>
         </div>
+
+        {/* Nueva capa de elementos temáticos */}
+        <div className="bakery-elements"></div>
 
         {/* Efecto de partículas de harina */}
         <div className="flour-particles"></div>
@@ -104,12 +112,19 @@ export default function Home() {
       {/* Header con logo y título - Mejorado para responsividad */}
       <div className="relative z-10 w-full overflow-hidden py-6 sm:py-8 md:pt-12 md:pb-8">
         <div className="container mx-auto flex flex-col items-center justify-center px-4">
-          {/* Logo con sombra - Tamaño adaptativo */}
-          <div className="w-24 h-24 sm:w-28 sm:h-28 md:w-36 md:h-36 rounded-full glass-card p-2 animate-float shadow-2xl mb-4 sm:mb-6 md:mb-8">
+          {/* Logo con sombra mejorada - Tamaño adaptativo */}
+          <div className="w-24 h-24 sm:w-28 sm:h-28 md:w-36 md:h-36 rounded-full glass-card p-2 animate-float mb-4 sm:mb-6 md:mb-8"
+               style={{
+                 boxShadow: '0 15px 35px rgba(139, 69, 19, 0.4), 0 8px 20px rgba(232, 90, 79, 0.3), 0 4px 10px rgba(220, 20, 60, 0.2), inset 0 2px 0 rgba(255, 255, 255, 0.3)',
+                 filter: 'drop-shadow(0 5px 15px rgba(139, 69, 19, 0.3))'
+               }}>
             <img
               src={config.branding.logoUrl || "https://via.placeholder.com/200"}
               alt={config.branding.name}
               className="w-full h-full rounded-full object-cover"
+              style={{
+                filter: 'drop-shadow(0 2px 4px rgba(139, 69, 19, 0.2))'
+              }}
             />
           </div>
 
