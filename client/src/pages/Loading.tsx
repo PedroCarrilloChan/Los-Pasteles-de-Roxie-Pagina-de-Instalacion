@@ -74,23 +74,26 @@ export default function Loading() {
   }
 
   return (
-    <div className="min-h-screen relative overflow-hidden flex items-center justify-center bg-black">
-      {/* Video de animación */}
-      <video
-        className="w-full h-full object-cover"
-        autoPlay
-        muted
-        playsInline
-        onEnded={handleVideoEnd}
-        onError={handleVideoError}
-        style={{ maxWidth: '100vw', maxHeight: '100vh' }}
-      >
-        <source 
-          src="https://walletclub.s3.us-east-1.amazonaws.com/Los+pasteles+de+roxie+video.mp4" 
-          type="video/mp4" 
-        />
-        Su navegador no soporta el elemento de video.
-      </video>
+    <div className="min-h-screen relative overflow-hidden flex items-center justify-center" 
+         style={{ background: 'linear-gradient(135deg, #DC143C 0%, #E85A4F 50%, #F5E6D3 100%)' }}>
+      
+      {/* Video en ventana glass transparente */}
+      <div className="glass-card w-11/12 max-w-4xl h-3/4 max-h-96 rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl drop-shadow-2xl border-2 border-white/30">
+        <video
+          className="w-full h-full object-cover rounded-2xl sm:rounded-3xl"
+          autoPlay
+          muted
+          playsInline
+          onEnded={handleVideoEnd}
+          onError={handleVideoError}
+        >
+          <source 
+            src="https://walletclub.s3.us-east-1.amazonaws.com/Los+pasteles+de+roxie+video.mp4" 
+            type="video/mp4" 
+          />
+          Su navegador no soporta el elemento de video.
+        </video>
+      </div>
 
       {/* Overlay con logo para branding durante el video */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">

@@ -199,7 +199,7 @@ export default function IphoneInstall() {
                   {error}
                 </p>
                 <Button 
-                  className="w-full h-11 sm:h-12 text-base bg-gradient-to-r from-blue-500 to-indigo-600 
+                  className="w-full h-11 sm:h-12 text-base bg-gradient-to-r from-red-500 to-pink-600 
                             text-white font-medium transition-all duration-300 hover:shadow-lg"
                   onClick={() => processUrl()}
                 >
@@ -209,7 +209,7 @@ export default function IphoneInstall() {
             ) : (
               <>
                 <Button 
-                  className="w-full h-11 sm:h-12 text-base bg-gradient-to-r from-blue-500 to-indigo-600 
+                  className="w-full h-11 sm:h-12 text-base bg-gradient-to-r from-red-500 to-pink-600 
                             text-white font-medium transition-all duration-300 hover:shadow-lg"
                   disabled={isProcessing || !modifiedUrl}
                   onClick={() => modifiedUrl && window.open(modifiedUrl, '_blank')}
@@ -265,7 +265,7 @@ export default function IphoneInstall() {
                       onClick={handleSendEmail}
                       disabled={isSendingEmail || !email || !modifiedUrl}
                       className="h-10 sm:h-11 min-w-[90px] sm:min-w-[100px] text-sm sm:text-base
-                                bg-gradient-to-r from-blue-500 to-indigo-600 text-white"
+                                bg-gradient-to-r from-red-500 to-pink-600 text-white"
                     >
                       {isSendingEmail ? (
                         <Loader2 className="h-4 w-4 animate-spin" />
