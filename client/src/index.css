@@ -121,6 +121,75 @@
   }
 }
 
+/* Iconos temáticos que suben */
+.themed-icons-rising {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.icon-element {
+  position: absolute;
+  bottom: -100px;
+  animation: iconRising 12s linear infinite;
+  opacity: 0.6;
+  filter: drop-shadow(0 2px 4px rgba(139, 69, 19, 0.3));
+  pointer-events: none;
+  user-select: none;
+}
+
+@keyframes iconRising {
+  0% { 
+    transform: translateY(0px) rotate(0deg) scale(0.8);
+    opacity: 0;
+  }
+  5% { 
+    opacity: 0.4;
+  }
+  10% { 
+    transform: translateY(-50px) rotate(5deg) scale(0.9);
+    opacity: 0.6;
+  }
+  20% { 
+    transform: translateY(-150px) rotate(-3deg) scale(1);
+    opacity: 0.7;
+  }
+  30% { 
+    transform: translateY(-250px) rotate(2deg) scale(1.1);
+    opacity: 0.8;
+  }
+  40% { 
+    transform: translateY(-350px) rotate(-2deg) scale(0.95);
+    opacity: 0.75;
+  }
+  50% { 
+    transform: translateY(-450px) rotate(4deg) scale(1.05);
+    opacity: 0.7;
+  }
+  60% { 
+    transform: translateY(-550px) rotate(-1deg) scale(0.9);
+    opacity: 0.65;
+  }
+  70% { 
+    transform: translateY(-650px) rotate(3deg) scale(1);
+    opacity: 0.6;
+  }
+  80% { 
+    transform: translateY(-750px) rotate(-2deg) scale(0.85);
+    opacity: 0.5;
+  }
+  90% { 
+    transform: translateY(-850px) rotate(1deg) scale(0.8);
+    opacity: 0.3;
+  }
+  100% { 
+    transform: translateY(-950px) rotate(0deg) scale(0.7);
+    opacity: 0;
+  }
+}
+
 /* Glassmorphism mejorado con tema de pastelería y mayor contraste */
 .glass-card {
   @apply backdrop-blur-xl border shadow-2xl;

@@ -58,55 +58,67 @@ export default function Home() {
 
   return (
     <div className="min-h-screen w-full relative flex flex-col">
-      {/* Fondo inmersivo 3D de pastelería mejorado */}
+      {/* Fondo con iconos temáticos que suben */}
       <div className="absolute inset-0 w-full h-full z-0 overflow-hidden">
-        {/* Elementos decorativos de pastelería flotantes con más sombras */}
-        <div className="absolute top-1/4 left-1/5 w-64 h-64 rounded-full backdrop-blur-3xl animate-float opacity-25"
-             style={{
-               animationDelay: '0s',
-               background: 'radial-gradient(circle, rgba(232, 90, 79, 0.4) 0%, rgba(245, 230, 211, 0.25) 50%, transparent 100%)',
-               filter: 'drop-shadow(0 8px 16px rgba(139, 69, 19, 0.3))'
-             }}>
-        </div>
-        <div className="absolute top-2/3 right-1/4 w-96 h-96 rounded-full backdrop-blur-3xl animate-float opacity-20"
-             style={{
-               animationDelay: '2s',
-               background: 'radial-gradient(circle, rgba(220, 20, 60, 0.35) 0%, rgba(210, 105, 30, 0.2) 50%, transparent 100%)',
-               filter: 'drop-shadow(0 12px 24px rgba(139, 69, 19, 0.25))'
-             }}>
-        </div>
-        <div className="absolute bottom-1/3 left-1/3 w-72 h-72 rounded-full backdrop-blur-3xl animate-float opacity-30"
-             style={{
-               animationDelay: '1s',
-               background: 'radial-gradient(circle, rgba(210, 105, 30, 0.4) 0%, rgba(245, 230, 211, 0.25) 50%, transparent 100%)',
-               filter: 'drop-shadow(0 10px 20px rgba(139, 69, 19, 0.28))'
-             }}>
-        </div>
+        {/* Fondo base rosado suave */}
+        <div className="absolute inset-0 bg-gradient-to-br from-pink-100 via-rose-50 to-pink-200 opacity-70"></div>
 
-        {/* Elementos temáticos adicionales con sombras */}
-        <div className="absolute top-10 right-1/3 w-32 h-32 rounded-full backdrop-blur-2xl animate-float opacity-35"
-             style={{
-               animationDelay: '3s',
-               background: 'radial-gradient(circle, rgba(245, 230, 211, 0.5) 0%, transparent 70%)',
-               filter: 'drop-shadow(0 6px 12px rgba(139, 69, 19, 0.2))'
-             }}>
+        {/* Iconos temáticos flotantes que suben */}
+        <div className="themed-icons-rising">
+          {/* Huesitos para perros */}
+          <div className="icon-element" style={{left: '10%', animationDelay: '0s', fontSize: '2rem'}}>🦴</div>
+          <div className="icon-element" style={{left: '85%', animationDelay: '2s', fontSize: '1.5rem'}}>🦴</div>
+          <div className="icon-element" style={{left: '60%', animationDelay: '4s', fontSize: '2.5rem'}}>🦴</div>
+          <div className="icon-element" style={{left: '25%', animationDelay: '6s', fontSize: '1.8rem'}}>🦴</div>
+          
+          {/* Cupcakes y pasteles */}
+          <div className="icon-element" style={{left: '20%', animationDelay: '1s', fontSize: '2.2rem'}}>🧁</div>
+          <div className="icon-element" style={{left: '75%', animationDelay: '3s', fontSize: '1.8rem'}}>🧁</div>
+          <div className="icon-element" style={{left: '45%', animationDelay: '5s', fontSize: '2rem'}}>🧁</div>
+          <div className="icon-element" style={{left: '90%', animationDelay: '7s', fontSize: '1.6rem'}}>🧁</div>
+          
+          {/* Pasteles grandes */}
+          <div className="icon-element" style={{left: '35%', animationDelay: '1.5s', fontSize: '2.5rem'}}>🎂</div>
+          <div className="icon-element" style={{left: '70%', animationDelay: '3.5s', fontSize: '2rem'}}>🎂</div>
+          <div className="icon-element" style={{left: '15%', animationDelay: '5.5s', fontSize: '2.2rem'}}>🎂</div>
+          
+          {/* Galletas y donas */}
+          <div className="icon-element" style={{left: '55%', animationDelay: '2s', fontSize: '1.8rem'}}>🍪</div>
+          <div className="icon-element" style={{left: '80%', animationDelay: '4s', fontSize: '2rem'}}>🍪</div>
+          <div className="icon-element" style={{left: '30%', animationDelay: '6s', fontSize: '1.5rem'}}>🍪</div>
+          
+          <div className="icon-element" style={{left: '40%', animationDelay: '2.5s', fontSize: '2rem'}}>🍩</div>
+          <div className="icon-element" style={{left: '65%', animationDelay: '4.5s', fontSize: '1.7rem'}}>🍩</div>
+          
+          {/* Ingredientes de pastelería */}
+          <div className="icon-element" style={{left: '50%', animationDelay: '3s', fontSize: '1.5rem'}}>🥚</div>
+          <div className="icon-element" style={{left: '85%', animationDelay: '5s', fontSize: '1.8rem'}}>🥚</div>
+          
+          <div className="icon-element" style={{left: '25%', animationDelay: '3.5s', fontSize: '1.6rem'}}>🧈</div>
+          <div className="icon-element" style={{left: '75%', animationDelay: '5.5s', fontSize: '1.4rem'}}>🧈</div>
+          
+          {/* Frutas para decorar */}
+          <div className="icon-element" style={{left: '15%', animationDelay: '4s', fontSize: '1.5rem'}}>🍓</div>
+          <div className="icon-element" style={{left: '60%', animationDelay: '6s', fontSize: '1.7rem'}}>🍓</div>
+          <div className="icon-element" style={{left: '90%', animationDelay: '8s', fontSize: '1.4rem'}}>🍓</div>
+          
+          <div className="icon-element" style={{left: '35%', animationDelay: '4.5s', fontSize: '1.6rem'}}>🍒</div>
+          <div className="icon-element" style={{left: '80%', animationDelay: '6.5s', fontSize: '1.5rem'}}>🍒</div>
+          
+          {/* Utensilios de cocina */}
+          <div className="icon-element" style={{left: '45%', animationDelay: '5s', fontSize: '1.8rem'}}>🥄</div>
+          <div className="icon-element" style={{left: '70%', animationDelay: '7s', fontSize: '1.6rem'}}>🥄</div>
+          
+          <div className="icon-element" style={{left: '20%', animationDelay: '5.5s', fontSize: '2rem'}}>🍴</div>
+          
+          {/* Corazones temáticos */}
+          <div className="icon-element" style={{left: '65%', animationDelay: '1s', fontSize: '1.5rem'}}>💕</div>
+          <div className="icon-element" style={{left: '30%', animationDelay: '3s', fontSize: '1.3rem'}}>💕</div>
+          <div className="icon-element" style={{left: '85%', animationDelay: '5s', fontSize: '1.4rem'}}>💕</div>
         </div>
-        <div className="absolute bottom-20 right-1/5 w-48 h-48 rounded-full backdrop-blur-2xl animate-float opacity-25"
-             style={{
-               animationDelay: '4s',
-               background: 'radial-gradient(circle, rgba(232, 90, 79, 0.3) 0%, transparent 70%)',
-               filter: 'drop-shadow(0 8px 16px rgba(139, 69, 19, 0.22))'
-             }}>
-        </div>
-
-        {/* Nueva capa de elementos temáticos */}
-        <div className="bakery-elements"></div>
-
-        {/* Efecto de partículas de harina */}
-        <div className="flour-particles"></div>
 
         {/* Capa de difuminado suave */}
-        <div className="absolute inset-0 backdrop-blur-[1px]"></div>
+        <div className="absolute inset-0 backdrop-blur-[0.5px] bg-white/5"></div>
       </div>
 
       {/* Header con logo y título - Mejorado para responsividad */}
