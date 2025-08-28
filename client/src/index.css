@@ -214,8 +214,10 @@
   object-position: center;
   width: 100%;
   height: 100%;
-  padding: 2px;
+  padding: 4px;
   border-radius: inherit;
+  display: block;
+  margin: auto;
 }
 
 /* Contenedor del logo flotante mejorado */
