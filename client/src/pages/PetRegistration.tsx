@@ -2,6 +2,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { useLocation } from "wouter";
+import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
@@ -35,6 +36,30 @@ const commonBreeds = [
   "Boxer",
   "Schnauzer",
   "Cocker Spaniel",
+  "Dálmata",
+  "Doberman",
+  "Pug",
+  "Shih Tzu",
+  "Maltés",
+  "Pitbull",
+  "Bull Terrier",
+  "Akita",
+  "Basset Hound",
+  "Boston Terrier",
+  "Bulldog Inglés",
+  "Chow Chow",
+  "Dachshund (Salchicha)",
+  "Gran Danés",
+  "Mastín",
+  "Pastor Belga",
+  "Pastor Australiano",
+  "Pointer",
+  "Samoyedo",
+  "San Bernardo",
+  "Setter Irlandés",
+  "Spaniel Bretón",
+  "Weimaraner",
+  "Xoloitzcuintli",
   "Mestizo",
   "Otro"
 ];
@@ -42,6 +67,8 @@ const commonBreeds = [
 export default function PetRegistration() {
   const [, navigate] = useLocation();
   const { toast } = useToast();
+  const [showCustomBreed, setShowCustomBreed] = useState(false);
+  const [customBreed, setCustomBreed] = useState("");
 
   const form = useForm<PetRegistrationData>({
     resolver: zodResolver(petRegistrationSchema),
@@ -54,10 +81,26 @@ export default function PetRegistration() {
 
   async function onSubmit(data: PetRegistrationData) {
     try {
+      // Si se seleccionó "Otro", usar la raza personalizada
+      const finalBreed = data.breed === "Otro" ? customBreed : data.breed;
+      
+      // Validar que si se seleccionó "Otro", se haya ingresado una raza personalizada
+      if (data.breed === "Otro" && !customBreed.trim()) {
+        toast({
+          variant: "destructive",
+          title: "Error",
+          description: "Por favor ingresa el nombre de la raza personalizada."
+        });
+        return;
+      }
+
       const response = await fetch('/api/register-pet', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
+        body: JSON.stringify({
+          ...data,
+          breed: finalBreed
+        })
       });
 
       const result = await response.json();
@@ -191,13 +234,19 @@ export default function PetRegistration() {
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel className="font-medium text-white text-sm sm:text-base">Raza</FormLabel>
-                      <Select onValueChange={field.onChange} defaultValue={field.value}>
+                      <Select onValueChange={(value) => {
+                        field.onChange(value);
+                        setShowCustomBreed(value === "Otro");
+                        if (value !== "Otro") {
+                          setCustomBreed("");
+                        }
+                      }} defaultValue={field.value}>
                         <FormControl>
                           <SelectTrigger className="h-10 sm:h-11 bg-white/40 backdrop-blur-md shadow-sm text-blue-900 font-medium border-white/30">
                             <SelectValue placeholder="Selecciona la raza" />
                           </SelectTrigger>
                         </FormControl>
-                        <SelectContent className="bg-white/95 backdrop-blur-md border-white/50">
+                        <SelectContent className="bg-white/95 backdrop-blur-md border-white/50 max-h-60 overflow-y-auto">
                           {commonBreeds.map((breed) => (
                             <SelectItem key={breed} value={breed} className="text-blue-900 font-medium">
                               {breed}
@@ -209,6 +258,21 @@ export default function PetRegistration() {
                     </FormItem>
                   )}
                 />
+                
+                {/* Campo personalizado para "Otro" */}
+                {showCustomBreed && (
+                  <div className="space-y-2">
+                    <label className="font-medium text-white text-sm sm:text-base">
+                      Especifica la raza
+                    </label>
+                    <Input
+                      placeholder="Ej: Mezcla de Labrador y Pastor"
+                      value={customBreed}
+                      onChange={(e) => setCustomBreed(e.target.value)}
+                      className="h-10 sm:h-11 bg-white/40 backdrop-blur-md shadow-sm text-blue-900 font-medium"
+                    />
+                  </div>
+                )}
                 <FormField
                   control={form.control}
                   name="age"
