@@ -8,3 +8,12 @@ export const registrationSchema = z.object({
 });
 
 export type RegistrationData = z.infer<typeof registrationSchema>;
+
+// Schema para datos de mascota
+export const petRegistrationSchema = z.object({
+  petName: z.string().min(1, "El nombre de la mascota es requerido"),
+  breed: z.string().min(1, "La raza es requerida"),
+  age: z.string().min(1, "La edad es requerida")
+});
+
+export type PetRegistrationData = z.infer<typeof petRegistrationSchema>;

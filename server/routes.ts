@@ -214,32 +214,54 @@ export function registerRoutes(app: Express): Server {
       }
     }
   });
-  app.post('/api/register', async (req, res) => {
-    try {
-      const { firstName, lastName, email, phone } = req.body;
 
-      if (!firstName || !lastName || !email || !phone) {
+  // Endpoint para registrar mascota
+  app.post('/api/register-pet', async (req, res) => {
+    try {
+      const { petName, breed, age } = req.body;
+
+      if (!petName || !breed || !age) {
         return res.status(400).json({ 
           success: false,
-          error: 'Faltan campos requeridos' 
+          error: 'Faltan campos requeridos de la mascota' 
         });
       }
 
-      console.log('Datos de registro:', {
+      // Obtener datos del usuario de la sesión
+      if (!req.session.userBasicData) {
+        return res.status(400).json({ 
+          success: false,
+          error: 'No se encontraron datos del usuario. Por favor registre primero al usuario.' 
+        });
+      }
+
+      const { firstName, lastName, email, phone } = req.session.userBasicData;
+
+      console.log('Datos completos para registro con mascota:', {
         firstName,
         lastName,
         email,
         phone,
+        petName,
+        breed,
+        age
       });
 
       const requestBody = {
         firstName,
         lastName,
         email,
-        phone
+        phone,
+        customFields: {
+          "Raza": breed,
+          "Edad": age,
+          "UrlInstalacionCarnet": "url",
+          "NombreMascota": petName,
+          "IdCarnetDigital": "0"
+        }
       };
 
-      console.log('Request a SmartPasses API:', JSON.stringify(requestBody, null, 2));
+      console.log('Request a SmartPasses API con mascota:', JSON.stringify(requestBody, null, 2));
 
       const response = await fetch(
         `${SERVER_CONFIG.walletClub.baseUrl}/loyalty/programs/${SERVER_CONFIG.walletClub.programId}/customers`, 
@@ -257,14 +279,12 @@ export function registerRoutes(app: Express): Server {
         errors?: Array<{field: string, reasons: string[]}>,
         message?: string
       };
-      console.log('Respuesta de SmartPasses API:', JSON.stringify(responseData, null, 2));
+      console.log('Respuesta de SmartPasses API con mascota:', JSON.stringify(responseData, null, 2));
 
       if (!response.ok) {
-        console.error('Error en SmartPasses API:', JSON.stringify(responseData, null, 2));
+        console.error('Error en SmartPasses API con mascota:', JSON.stringify(responseData, null, 2));
 
-        // Verificamos que responseData tenga la estructura esperada
         if (responseData && typeof responseData === 'object' && 'errors' in responseData && Array.isArray(responseData.errors)) {
-          // Errores específicos para número de teléfono ya registrado
           const hasPhoneTakenError = responseData.errors.some(
             error => error.field === 'phone' && Array.isArray(error.reasons) && error.reasons.includes('Phone number already taken')
           );
@@ -276,7 +296,6 @@ export function registerRoutes(app: Express): Server {
             });
           }
 
-          // Errores de correo electrónico
           const hasEmailError = responseData.errors.some(
             error => error.field === 'email'
           );
@@ -288,7 +307,6 @@ export function registerRoutes(app: Express): Server {
             });
           }
 
-          // Errores de teléfono
           const hasPhoneError = responseData.errors.some(
             error => error.field === 'phone'
           );
@@ -301,16 +319,50 @@ export function registerRoutes(app: Express): Server {
           }
         }
 
-        // Error genérico si no podemos determinar el tipo específico
         return res.status(400).json({
           success: false,
           error: responseData && typeof responseData === 'object' && 'message' in responseData 
             ? responseData.message 
-            : 'Error en el registro. Por favor intente nuevamente.'
+            : 'Error en el registro de la mascota. Por favor intente nuevamente.'
         });
       }
 
       req.session.loyaltyData = responseData;
+      res.json({ success: true });
+    } catch (error) {
+      console.error('Error en registro de mascota:', error);
+      res.status(500).json({ 
+        success: false,
+        error: 'Error en el registro de la mascota. Por favor intente nuevamente.' 
+      });
+    }
+  });
+
+  app.post('/api/register', async (req, res) => {
+    try {
+      const { firstName, lastName, email, phone } = req.body;
+
+      if (!firstName || !lastName || !email || !phone) {
+        return res.status(400).json({ 
+          success: false,
+          error: 'Faltan campos requeridos' 
+        });
+      }
+
+      console.log('Datos básicos del usuario:', {
+        firstName,
+        lastName,
+        email,
+        phone,
+      });
+
+      // Guardar datos básicos en sesión para usarlos luego con los datos de la mascota
+      req.session.userBasicData = {
+        firstName,
+        lastName,
+        email,
+        phone: phone.startsWith('+') ? phone : `+${phone}`
+      };
       res.json({ success: true });
     } catch (error) {
       console.error('Error en registro:', error);

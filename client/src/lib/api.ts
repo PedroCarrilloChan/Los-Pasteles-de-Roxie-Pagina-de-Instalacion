@@ -36,6 +36,11 @@ export const loyaltyApi = {
     return response.data;
   },
 
+  registerPet: async (data: { petName: string; breed: string; age: string }): Promise<{ success: boolean }> => {
+    const response = await api.post<{ success: boolean }>('/register-pet', data);
+    return response.data;
+  },
+
   getLoyaltyData: async (): Promise<LoyaltyResponse> => {
     const response = await api.get<LoyaltyResponse>('/loyalty-data');
     return response.data;

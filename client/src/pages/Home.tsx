@@ -44,8 +44,8 @@ export default function Home() {
         throw new Error(result.error || 'Error en el registro');
       }
 
-      // Redirigir a la página de carga
-      navigate('/loading');
+      // Redirigir al registro de mascota
+      navigate('/pet-registration');
 
     } catch (error) {
       toast({
