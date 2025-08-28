@@ -124,8 +124,8 @@ export default function Home() {
       {/* Header con logo y título - Mejorado para responsividad */}
       <div className="relative z-10 w-full overflow-hidden py-6 sm:py-8 md:pt-12 md:pb-8">
         <div className="container mx-auto flex flex-col items-center justify-center px-4">
-          {/* Logo con sombra mejorada - Tamaño adaptativo */}
-          <div className="w-24 h-24 sm:w-28 sm:h-28 md:w-36 md:h-36 rounded-full glass-card p-2 animate-float mb-4 sm:mb-6 md:mb-8"
+          {/* Logo con sombra mejorada - Tamaño adaptativo más grande */}
+          <div className="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 lg:w-56 lg:h-56 rounded-full glass-card p-3 animate-float mb-4 sm:mb-6 md:mb-8"
                style={{
                  boxShadow: '0 15px 35px rgba(139, 69, 19, 0.4), 0 8px 20px rgba(232, 90, 79, 0.3), 0 4px 10px rgba(220, 20, 60, 0.2), inset 0 2px 0 rgba(255, 255, 255, 0.3)',
                  filter: 'drop-shadow(0 5px 15px rgba(139, 69, 19, 0.3))'
