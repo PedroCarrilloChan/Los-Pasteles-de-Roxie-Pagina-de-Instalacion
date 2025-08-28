@@ -328,6 +328,66 @@ export function registerRoutes(app: Express): Server {
       }
 
       req.session.loyaltyData = responseData;
+
+      // Crear usuario en ChatBotBuilder después del registro exitoso
+      try {
+        console.log('Creando usuario en ChatBotBuilder...');
+        
+        const chatBotBuilderBody = {
+          phone: phone,
+          email: email,
+          first_name: firstName,
+          last_name: lastName,
+          actions: [
+            {
+              action: "set_field_value",
+              field_name: "CD_Nombre_Mascota",
+              value: petName
+            },
+            {
+              action: "set_field_value",
+              field_name: "CD_Raza",
+              value: breed
+            },
+            {
+              action: "set_field_value",
+              field_name: "CD_EdadMascota",
+              value: age
+            },
+            {
+              action: "send_flow",
+              flow_id: 1752250957765
+            }
+          ]
+        };
+
+        console.log('Enviando datos a ChatBotBuilder:', JSON.stringify(chatBotBuilderBody, null, 2));
+
+        const chatBotResponse = await fetch('https://app.chatgptbuilder.io/api/contacts', {
+          method: 'POST',
+          headers: {
+            'accept': 'application/json',
+            'X-ACCESS-TOKEN': '1872077.CwMkMqynAn4DL78vhHIBgcyzrcpYCA08Y8WnAYZ2pccBlo',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(chatBotBuilderBody)
+        });
+
+        const chatBotData = await chatBotResponse.json();
+        console.log('Respuesta de ChatBotBuilder:', JSON.stringify(chatBotData, null, 2));
+
+        if (!chatBotResponse.ok) {
+          console.error('Error en ChatBotBuilder (no crítico):', chatBotData);
+          // No lanzamos error aquí para no interrumpir el flujo principal
+        } else {
+          console.log('Usuario creado exitosamente en ChatBotBuilder');
+        }
+
+      } catch (chatBotError) {
+        console.error('Error al crear usuario en ChatBotBuilder (no crítico):', chatBotError);
+        // No lanzamos error para no interrumpir el flujo principal
+      }
+
       res.json({ success: true });
     } catch (error) {
       console.error('Error en registro de mascota:', error);
