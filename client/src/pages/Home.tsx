@@ -140,17 +140,17 @@ export default function Home() {
             />
           </div>
 
-          {/* Título con tipografía mejorada - Responsivo */}
-          <div className="text-center space-y-2 sm:space-y-4 w-full max-w-4xl px-2 sm:px-4">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight">
-              <span className="block sm:inline drop-shadow-[0_3px_3px_rgba(139,69,19,0.4)]" 
+          {/* Título con tipografía mejorada - Responsivo mejorado */}
+          <div className="text-center space-y-2 sm:space-y-4 w-full max-w-4xl px-3 sm:px-4">
+            <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight leading-tight">
+              <span className="block xs:inline drop-shadow-[0_3px_3px_rgba(139,69,19,0.4)]" 
                     style={{color: '#8B4513'}}>Los Pasteles</span>{" "}
-              <span className="block sm:inline drop-shadow-[0_3px_3px_rgba(139,69,19,0.4)]" 
+              <span className="block xs:inline drop-shadow-[0_3px_3px_rgba(139,69,19,0.4)]" 
                     style={{color: '#DC143C'}}>de</span>{" "}
-              <span className="block sm:inline drop-shadow-[0_3px_3px_rgba(139,69,19,0.4)]" 
+              <span className="block xs:inline drop-shadow-[0_3px_3px_rgba(139,69,19,0.4)]" 
                     style={{color: '#E85A4F'}}>Roxie</span>
             </h1>
-            <p className="text-base sm:text-lg md:text-xl max-w-2xl mx-auto leading-relaxed drop-shadow-[0_2px_2px_rgba(139,69,19,0.3)] font-medium"
+            <p className="text-sm sm:text-base md:text-lg lg:text-xl max-w-2xl mx-auto leading-relaxed drop-shadow-[0_2px_2px_rgba(139,69,19,0.3)] font-medium px-2"
                style={{color: '#8B4513'}}>
               Únete a nuestro programa de lealtad y disfruta de deliciosos pasteles, beneficios exclusivos y ofertas especiales
             </p>
