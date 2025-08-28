@@ -355,6 +355,16 @@ export function registerRoutes(app: Express): Server {
               value: age
             },
             {
+              action: "set_field_value",
+              field_name: "CD_SerialNumber",
+              value: responseData.card?.serialNumber || ""
+            },
+            {
+              action: "set_field_value",
+              field_name: "CD_IdCustomer",
+              value: responseData.id?.toString() || ""
+            },
+            {
               action: "send_flow",
               flow_id: 1752250957765
             }
