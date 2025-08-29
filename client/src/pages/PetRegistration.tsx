@@ -94,12 +94,17 @@ export default function PetRegistration() {
         return;
       }
 
+      // Intentar obtener datos del usuario del localStorage como fallback
+      const storedUserData = localStorage.getItem('userData');
+      const userData = storedUserData ? JSON.parse(storedUserData) : null;
+
       const response = await fetch('/api/register-pet', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           ...data,
-          breed: finalBreed
+          breed: finalBreed,
+          userData: userData // Enviar datos como fallback
         })
       });
 

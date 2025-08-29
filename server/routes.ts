@@ -227,15 +227,22 @@ export function registerRoutes(app: Express): Server {
         });
       }
 
-      // Obtener datos del usuario de la sesión
-      if (!req.session.userBasicData) {
+      // Obtener datos del usuario de la sesión o del request body como fallback
+      let userData;
+      
+      if (req.session.userBasicData) {
+        userData = req.session.userBasicData;
+      } else if (req.body.userData) {
+        // Fallback: los datos del usuario vienen en el request
+        userData = req.body.userData;
+      } else {
         return res.status(400).json({ 
           success: false,
           error: 'No se encontraron datos del usuario. Por favor registre primero al usuario.' 
         });
       }
 
-      const { firstName, lastName, email, phone } = req.session.userBasicData;
+      const { firstName, lastName, email, phone } = userData;
 
       console.log('Datos completos para registro con mascota:', {
         firstName,

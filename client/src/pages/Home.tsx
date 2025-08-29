@@ -44,7 +44,23 @@ export default function Home() {
         throw new Error(result.error || 'Error en el registro');
       }
 
-      // Redirigir al registro de mascota
+      // Guardar datos en localStorage como backup para VPS
+      localStorage.setItem('userData', JSON.stringify({
+        firstName: data.firstName,
+        lastName: data.lastName,
+        email: data.email,
+        phone: data.phone.startsWith('+') ? data.phone : `+${data.phone}`
+      }));
+
+      // Detectar tipo de dispositivo y enviarlo
+      const deviceType = detectDevice();
+      await fetch('/api/send-device-type', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ deviceType })
+      });
+
+      // Navegar a la página de registro de mascota
       navigate('/pet-registration');
 
     } catch (error) {
