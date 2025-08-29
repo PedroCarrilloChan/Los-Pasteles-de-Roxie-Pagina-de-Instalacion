@@ -1,0 +1,82 @@
+Abre server/routes.ts en Replit.
+
+Busca el final del endpoint app.post('/api/register-pet', ...).
+
+Busca esta línea:
+
+TypeScript
+
+// Cerca del final de la lógica exitosa
+res.json({ success: true });
+Reemplázala con esto:
+
+TypeScript
+
+// Reemplaza la línea anterior con este bloque
+// Ahora devolvemos todos los datos de lealtad inmediatamente.
+res.json({
+  success: true,
+  loyaltyData: responseData // Esta variable contiene los datos de SmartPasses
+});
+### Paso 2: Modifica el Frontend (En Replit)
+Ahora, el frontend debe leer esta nueva respuesta y guardar el customerId y el link.
+
+En el archivo donde registras la mascota (ej. PetRegistration.tsx):
+
+Busca la función que hace la llamada a /api/register-pet.
+
+Tu código actual probablemente hace algo así:
+
+TypeScript
+
+// Dentro de la función que envía los datos de la mascota
+const response = await axios.post('/api/register-pet', payload);
+navigate('/pagina-de-instalacion');
+Modifícalo para que guarde los datos que ahora recibe del backend:
+
+TypeScript
+
+// Dentro de la función que envía los datos de la mascota
+const response = await axios.post('/api/register-pet', payload);
+
+if (response.data.success && response.data.loyaltyData) {
+  // Guardamos los datos recibidos para usarlos en la siguiente página
+  localStorage.setItem('loyaltyData', JSON.stringify(response.data.loyaltyData));
+}
+
+navigate('/pagina-de-instalacion');
+### Paso 3: Usa los Datos Guardados en la Página Final
+Finalmente, en la página de instalación (AndroidInstall.tsx o IphoneInstall.tsx), en lugar de llamar a /api/loyalty-data, lee directamente de localStorage.
+
+TypeScript
+
+// En tu página de instalación (AndroidInstall.tsx o IphoneInstall.tsx)
+import React, { useState, useEffect } from 'react';
+
+const InstallationPage = () => {
+  const [installLink, setInstallLink] = useState('');
+
+  useEffect(() => {
+    const storedData = localStorage.getItem('loyaltyData');
+    if (storedData) {
+      const loyaltyData = JSON.parse(storedData);
+      // Asumiendo que la URL está en loyaltyData.card.url
+      if (loyaltyData.card && loyaltyData.card.url) {
+        setInstallLink(loyaltyData.card.url);
+      }
+    }
+  }, []);
+
+  return (
+    <div>
+      {/* ... */}
+      <a href={installLink || '#'}>
+        <button disabled={!installLink}>
+          Obtener mi tarjeta
+        </button>
+      </a>
+      {/* ... */}
+    </div>
+  );
+};
+Con este flujo, eliminas la dependencia de la frágil sesión en el último paso. La información viaja del backend al frontend en un solo POST y se guarda en localStorage para su uso inmediato.
