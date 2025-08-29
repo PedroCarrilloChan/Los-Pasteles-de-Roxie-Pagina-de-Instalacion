@@ -343,6 +343,8 @@ export function registerRoutes(app: Express): Server {
       }
 
       req.session.loyaltyData = responseData;
+      // Guardar también el ID del cliente para recuperación posterior
+      req.session.customerId = responseData.id;
 
       // Crear usuario en ChatBotBuilder después del registro exitoso
       try {
@@ -463,6 +465,43 @@ export function registerRoutes(app: Express): Server {
       res.json(req.session.loyaltyData);
     } else {
       res.status(404).json({ error: 'No se encontraron datos de lealtad' });
+    }
+  });
+
+  // Nuevo endpoint para obtener datos de tarjeta por ID de customer
+  app.get('/api/card-data/:customerId', async (req, res) => {
+    try {
+      const { customerId } = req.params;
+      
+      if (!customerId) {
+        return res.status(400).json({ error: 'ID de cliente es requerido' });
+      }
+
+      console.log('Obteniendo datos de tarjeta para customer:', customerId);
+
+      const response = await fetch(
+        `${SERVER_CONFIG.walletClub.baseUrl}/loyalty/programs/${SERVER_CONFIG.walletClub.programId}/customers/${customerId}`, 
+        {
+          method: 'GET',
+          headers: {
+            'Authorization': SERVER_CONFIG.walletClub.apiKey
+          }
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error(`Error al obtener datos del cliente: ${response.status}`);
+      }
+
+      const customerData = await response.json();
+      console.log('Datos del cliente obtenidos:', JSON.stringify(customerData, null, 2));
+
+      res.json(customerData);
+    } catch (error) {
+      console.error('Error al obtener datos de tarjeta:', error);
+      res.status(500).json({ 
+        error: 'Error al obtener datos de la tarjeta' 
+      });
     }
   });
 

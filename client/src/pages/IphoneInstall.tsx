@@ -94,6 +94,8 @@ export default function IphoneInstall() {
   };
 
   const processUrl = async () => {
+    console.log('Datos de loyalty recibidos:', loyaltyData);
+    
     if (loyaltyData?.card?.url) {
       setIsProcessing(true);
       setError(null);

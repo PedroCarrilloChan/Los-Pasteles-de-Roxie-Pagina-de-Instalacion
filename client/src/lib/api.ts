@@ -42,8 +42,19 @@ export const loyaltyApi = {
   },
 
   getLoyaltyData: async (): Promise<LoyaltyResponse> => {
-    const response = await api.get<LoyaltyResponse>('/loyalty-data');
-    return response.data;
+    try {
+      const response = await api.get<LoyaltyResponse>('/loyalty-data');
+      return response.data;
+    } catch (error) {
+      // Fallback: intentar obtener datos usando customer ID almacenado
+      console.log('Fallback: intentando obtener datos por customer ID');
+      const customerId = localStorage.getItem('customerId');
+      if (customerId) {
+        const fallbackResponse = await api.get<LoyaltyResponse>(`/card-data/${customerId}`);
+        return fallbackResponse.data;
+      }
+      throw error;
+    }
   },
 
   getModifiedUrl: async (originalUrl: string): Promise<string> => {
@@ -92,7 +103,7 @@ export const loyaltyApi = {
           }
         }
       );
-      
+
       const data = response.data;
       console.log('Respuesta recibida del servidor:', data);
 
@@ -104,37 +115,37 @@ export const loyaltyApi = {
 
     } catch (error) {
       console.error('Error al generar link para Android:', error);
-      
+
       // Manejo de errores específicos
       if (axios.isAxiosError(error)) {
         if (error.code === 'ECONNABORTED') {
           throw new Error('La solicitud tomó demasiado tiempo. Por favor, inténtelo de nuevo.');
         }
-        
+
         if (!error.response) {
           throw new Error('No se pudo conectar al servidor. Por favor, verifique su conexión e inténtelo de nuevo.');
         }
-        
+
         // Errores específicos basados en el código de estado HTTP
         const statusCode = error.response.status;
-        
+
         if (statusCode === 404) {
           throw new Error('El servicio de generación de enlaces no está disponible. Por favor, inténtelo más tarde.');
         }
-        
+
         if (statusCode === 429) {
           throw new Error('Demasiadas solicitudes. Por favor, espere un momento e inténtelo de nuevo.');
         }
-        
+
         // Error del servidor
         if (statusCode >= 500) {
           throw new Error('Error en el servidor. Por favor, inténtelo más tarde.');
         }
-        
+
         // Error genérico con mensaje del servidor
         throw new Error(error.response.data?.error || 'Error al generar link para Android');
       }
-      
+
       // Si no es un error de Axios, lanzar el error original
       throw error instanceof Error ? error : new Error('Error desconocido al generar link para Android');
     }

@@ -1,4 +1,3 @@
-
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { useLocation } from "wouter";
@@ -83,7 +82,7 @@ export default function PetRegistration() {
     try {
       // Si se seleccionó "Otro", usar la raza personalizada
       const finalBreed = data.breed === "Otro" ? customBreed : data.breed;
-      
+
       // Validar que si se seleccionó "Otro", se haya ingresado una raza personalizada
       if (data.breed === "Otro" && !customBreed.trim()) {
         toast({
@@ -115,6 +114,19 @@ export default function PetRegistration() {
       }
 
       // Redirigir a la página de carga
+      // Guardar customer ID en localStorage para fallback
+      const loyaltyResponse = await fetch('/api/loyalty-data');
+      if (loyaltyResponse.ok) {
+        const loyaltyData = await loyaltyResponse.json();
+        if (loyaltyData.id) {
+          localStorage.setItem('customerId', loyaltyData.id.toString());
+        }
+      }
+
+      toast({
+        title: "¡Registro exitoso!",
+        description: "Tu mascota ha sido registrada correctamente.",
+      });
       navigate('/loading');
 
     } catch (error) {
@@ -140,28 +152,28 @@ export default function PetRegistration() {
           <div className="icon-element" style={{left: '85%', animationDelay: '2s', fontSize: '1.5rem'}}>🦴</div>
           <div className="icon-element" style={{left: '60%', animationDelay: '4s', fontSize: '2.5rem'}}>🦴</div>
           <div className="icon-element" style={{left: '25%', animationDelay: '6s', fontSize: '1.8rem'}}>🦴</div>
-          
+
           {/* Mascotas */}
           <div className="icon-element" style={{left: '20%', animationDelay: '1s', fontSize: '2.2rem'}}>🐕</div>
           <div className="icon-element" style={{left: '75%', animationDelay: '3s', fontSize: '1.8rem'}}>🐕</div>
           <div className="icon-element" style={{left: '45%', animationDelay: '5s', fontSize: '2rem'}}>🐕</div>
           <div className="icon-element" style={{left: '90%', animationDelay: '7s', fontSize: '1.6rem'}}>🐕</div>
-          
+
           {/* Comida para mascotas y pasteles */}
           <div className="icon-element" style={{left: '35%', animationDelay: '1.5s', fontSize: '2.5rem'}}>🧁</div>
           <div className="icon-element" style={{left: '70%', animationDelay: '3.5s', fontSize: '2rem'}}>🧁</div>
           <div className="icon-element" style={{left: '15%', animationDelay: '5.5s', fontSize: '2.2rem'}}>🧁</div>
-          
+
           {/* Corazones temáticos */}
           <div className="icon-element" style={{left: '65%', animationDelay: '1s', fontSize: '1.5rem'}}>💕</div>
           <div className="icon-element" style={{left: '30%', animationDelay: '3s', fontSize: '1.3rem'}}>💕</div>
           <div className="icon-element" style={{left: '85%', animationDelay: '5s', fontSize: '1.4rem'}}>💕</div>
-          
+
           {/* Huellas */}
           <div className="icon-element" style={{left: '55%', animationDelay: '2s', fontSize: '1.8rem'}}>🐾</div>
           <div className="icon-element" style={{left: '80%', animationDelay: '4s', fontSize: '2rem'}}>🐾</div>
           <div className="icon-element" style={{left: '30%', animationDelay: '6s', fontSize: '1.5rem'}}>🐾</div>
-          
+
           {/* Juguetes para mascotas */}
           <div className="icon-element" style={{left: '40%', animationDelay: '2.5s', fontSize: '2rem'}}>🎾</div>
           <div className="icon-element" style={{left: '65%', animationDelay: '4.5s', fontSize: '1.7rem'}}>🎾</div>
@@ -263,7 +275,7 @@ export default function PetRegistration() {
                     </FormItem>
                   )}
                 />
-                
+
                 {/* Campo personalizado para "Otro" */}
                 {showCustomBreed && (
                   <div className="space-y-2">

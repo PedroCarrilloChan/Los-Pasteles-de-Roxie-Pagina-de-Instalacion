@@ -96,7 +96,10 @@ export default function AndroidInstall() {
 
   useEffect(() => {
     const processUrl = async () => {
+      console.log('Datos de loyalty recibidos:', loyaltyData);
+      
       if (!loyaltyData?.card?.url) {
+        console.error('No se encontró la URL de la tarjeta en:', loyaltyData);
         setError("No se encontró la URL de la tarjeta");
         return;
       }
