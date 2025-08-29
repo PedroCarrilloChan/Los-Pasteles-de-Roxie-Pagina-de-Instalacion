@@ -70,47 +70,47 @@ export default function Home() {
           <div className="icon-element" style={{left: '85%', animationDelay: '2s', fontSize: '1.5rem'}}>🦴</div>
           <div className="icon-element" style={{left: '60%', animationDelay: '4s', fontSize: '2.5rem'}}>🦴</div>
           <div className="icon-element" style={{left: '25%', animationDelay: '6s', fontSize: '1.8rem'}}>🦴</div>
-          
+
           {/* Cupcakes y pasteles */}
           <div className="icon-element" style={{left: '20%', animationDelay: '1s', fontSize: '2.2rem'}}>🧁</div>
           <div className="icon-element" style={{left: '75%', animationDelay: '3s', fontSize: '1.8rem'}}>🧁</div>
           <div className="icon-element" style={{left: '45%', animationDelay: '5s', fontSize: '2rem'}}>🧁</div>
           <div className="icon-element" style={{left: '90%', animationDelay: '7s', fontSize: '1.6rem'}}>🧁</div>
-          
+
           {/* Pasteles grandes */}
           <div className="icon-element" style={{left: '35%', animationDelay: '1.5s', fontSize: '2.5rem'}}>🎂</div>
           <div className="icon-element" style={{left: '70%', animationDelay: '3.5s', fontSize: '2rem'}}>🎂</div>
           <div className="icon-element" style={{left: '15%', animationDelay: '5.5s', fontSize: '2.2rem'}}>🎂</div>
-          
+
           {/* Galletas y donas */}
           <div className="icon-element" style={{left: '55%', animationDelay: '2s', fontSize: '1.8rem'}}>🍪</div>
           <div className="icon-element" style={{left: '80%', animationDelay: '4s', fontSize: '2rem'}}>🍪</div>
           <div className="icon-element" style={{left: '30%', animationDelay: '6s', fontSize: '1.5rem'}}>🍪</div>
-          
+
           <div className="icon-element" style={{left: '40%', animationDelay: '2.5s', fontSize: '2rem'}}>🍩</div>
           <div className="icon-element" style={{left: '65%', animationDelay: '4.5s', fontSize: '1.7rem'}}>🍩</div>
-          
+
           {/* Ingredientes de pastelería */}
           <div className="icon-element" style={{left: '50%', animationDelay: '3s', fontSize: '1.5rem'}}>🥚</div>
           <div className="icon-element" style={{left: '85%', animationDelay: '5s', fontSize: '1.8rem'}}>🥚</div>
-          
+
           <div className="icon-element" style={{left: '25%', animationDelay: '3.5s', fontSize: '1.6rem'}}>🧈</div>
           <div className="icon-element" style={{left: '75%', animationDelay: '5.5s', fontSize: '1.4rem'}}>🧈</div>
-          
+
           {/* Frutas para decorar */}
           <div className="icon-element" style={{left: '15%', animationDelay: '4s', fontSize: '1.5rem'}}>🍓</div>
           <div className="icon-element" style={{left: '60%', animationDelay: '6s', fontSize: '1.7rem'}}>🍓</div>
           <div className="icon-element" style={{left: '90%', animationDelay: '8s', fontSize: '1.4rem'}}>🍓</div>
-          
+
           <div className="icon-element" style={{left: '35%', animationDelay: '4.5s', fontSize: '1.6rem'}}>🍒</div>
           <div className="icon-element" style={{left: '80%', animationDelay: '6.5s', fontSize: '1.5rem'}}>🍒</div>
-          
+
           {/* Utensilios de cocina */}
           <div className="icon-element" style={{left: '45%', animationDelay: '5s', fontSize: '1.8rem'}}>🥄</div>
           <div className="icon-element" style={{left: '70%', animationDelay: '7s', fontSize: '1.6rem'}}>🥄</div>
-          
+
           <div className="icon-element" style={{left: '20%', animationDelay: '5.5s', fontSize: '2rem'}}>🍴</div>
-          
+
           {/* Corazones temáticos */}
           <div className="icon-element" style={{left: '65%', animationDelay: '1s', fontSize: '1.5rem'}}>💕</div>
           <div className="icon-element" style={{left: '30%', animationDelay: '3s', fontSize: '1.3rem'}}>💕</div>
@@ -143,11 +143,11 @@ export default function Home() {
           {/* Título con tipografía mejorada - Responsivo mejorado */}
           <div className="text-center space-y-2 sm:space-y-4 w-full max-w-4xl px-3 sm:px-4">
             <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight leading-tight">
-              <span className="block xs:inline drop-shadow-[0_3px_3px_rgba(139,69,19,0.4)]" 
+              <span className="block xs:inline drop-shadow-[0_3px_3px_rgba(139,69,19,0.4)]"
                     style={{color: '#8B4513'}}>Los Pasteles</span>{" "}
-              <span className="block xs:inline drop-shadow-[0_3px_3px_rgba(139,69,19,0.4)]" 
+              <span className="block xs:inline drop-shadow-[0_3px_3px_rgba(139,69,19,0.4)]"
                     style={{color: '#DC143C'}}>de</span>{" "}
-              <span className="block xs:inline drop-shadow-[0_3px_3px_rgba(139,69,19,0.4)]" 
+              <span className="block xs:inline drop-shadow-[0_3px_3px_rgba(139,69,19,0.4)]"
                     style={{color: '#E85A4F'}}>Roxie</span>
             </h1>
             <p className="text-sm sm:text-base md:text-lg lg:text-xl max-w-2xl mx-auto leading-relaxed drop-shadow-[0_2px_2px_rgba(139,69,19,0.3)] font-medium px-2"
@@ -160,11 +160,11 @@ export default function Home() {
 
       {/* Formulario con efecto glassmorphism - Mejorado para responsividad */}
       <div className="relative z-10 flex-1 container max-w-lg mx-auto px-4 py-6 sm:py-8">
-        <Card className="glass-card w-full max-w-md mx-auto border-none shadow-2xl drop-shadow-2xl 
-                       transform transition-all duration-300 hover:shadow-3xl backdrop-blur-xl bg-white/15 border border-white/20 
+        <Card className="glass-card w-full max-w-md mx-auto border-none shadow-2xl drop-shadow-2xl
+                       transform transition-all duration-300 hover:shadow-3xl backdrop-blur-xl bg-white/15 border border-white/20
                         rounded-xl sm:rounded-2xl">
           <CardHeader className="text-center p-4 sm:pb-2">
-            <CardTitle className="text-xl sm:text-2xl font-bold drop-shadow-[0_1px_1px_rgba(245,230,211,0.8)]" 
+            <CardTitle className="text-xl sm:text-2xl font-bold drop-shadow-[0_1px_1px_rgba(245,230,211,0.8)]"
                        style={{color: '#8B4513'}}>Registro</CardTitle>
           </CardHeader>
           <CardContent className="p-6 sm:pt-4">
@@ -175,9 +175,9 @@ export default function Home() {
                   name="firstName"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="font-medium text-white text-sm sm:text-base">Nombre</FormLabel>
+                      <FormLabel className="font-semibold text-black text-sm sm:text-base bg-white px-2 py-1 rounded-md shadow-sm border border-gray-200">Nombre</FormLabel>
                       <FormControl>
-                        <Input placeholder="Juan" {...field} className="h-10 sm:h-11 bg-white/40 backdrop-blur-md shadow-sm text-blue-900 font-medium" />
+                        <Input placeholder="Juan" {...field} className="h-10 sm:h-11 bg-white/40 backdrop-blur-md shadow-sm text-gray-600 font-medium" />
                       </FormControl>
                       <FormMessage className="text-xs sm:text-sm font-medium text-red-300" />
                     </FormItem>
@@ -188,9 +188,9 @@ export default function Home() {
                   name="lastName"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="font-medium text-white text-sm sm:text-base">Apellido</FormLabel>
+                      <FormLabel className="font-semibold text-black text-sm sm:text-base bg-white px-2 py-1 rounded-md shadow-sm border border-gray-200">Apellido</FormLabel>
                       <FormControl>
-                        <Input placeholder="Pérez" {...field} className="h-10 sm:h-11 bg-white/40 backdrop-blur-md shadow-sm text-blue-900 font-medium" />
+                        <Input placeholder="Pérez" {...field} className="h-10 sm:h-11 bg-white/40 backdrop-blur-md shadow-sm text-gray-600 font-medium" />
                       </FormControl>
                       <FormMessage className="text-xs sm:text-sm font-medium text-red-300" />
                     </FormItem>
@@ -201,13 +201,13 @@ export default function Home() {
                   name="email"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="font-medium text-white text-sm sm:text-base">Correo Electrónico</FormLabel>
+                      <FormLabel className="font-semibold text-black text-sm sm:text-base bg-white px-2 py-1 rounded-md shadow-sm border border-gray-200">Correo Electrónico</FormLabel>
                       <FormControl>
                         <Input
                           type="email"
                           placeholder="juan@ejemplo.com"
                           {...field}
-                          className="h-10 sm:h-11 bg-white/40 backdrop-blur-md shadow-sm text-blue-900 font-medium"
+                          className="h-10 sm:h-11 bg-white/40 backdrop-blur-md shadow-sm text-gray-600 font-medium"
                         />
                       </FormControl>
                       <FormMessage className="text-xs sm:text-sm font-medium text-red-300" />
@@ -219,7 +219,7 @@ export default function Home() {
                   name="phone"
                   render={({ field: { onChange, value, ...field } }) => (
                     <FormItem>
-                      <FormLabel className="font-medium text-white text-sm sm:text-base">Número de Teléfono</FormLabel>
+                      <FormLabel className="font-semibold text-black text-sm sm:text-base bg-white px-2 py-1 rounded-md shadow-sm border border-gray-200">Teléfono</FormLabel>
                       <FormControl>
                         <PhoneInput
                           country={'mx'}
@@ -227,7 +227,7 @@ export default function Home() {
                           enableSearch={true}
                           value={value}
                           onChange={(phone) => onChange(`+${phone}`)}
-                          inputClass="w-full p-2 rounded-md border border-white/30 bg-white/40 backdrop-blur-md text-blue-900 font-medium h-10 sm:h-11 shadow-sm"
+                          inputClass="w-full p-2 rounded-md border border-white/30 bg-white/40 backdrop-blur-md text-gray-600 font-medium h-10 sm:h-11 shadow-sm"
                           containerClass="phone-input"
                           {...field}
                         />

@@ -220,9 +220,9 @@ export default function PetRegistration() {
                   name="petName"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="font-medium text-white text-sm sm:text-base">Nombre de la Mascota</FormLabel>
+                      <FormLabel className="font-semibold text-black text-sm sm:text-base bg-white px-2 py-1 rounded-md shadow-sm border border-gray-200">Nombre de la Mascota</FormLabel>
                       <FormControl>
-                        <Input placeholder="Max" {...field} className="h-10 sm:h-11 bg-white/40 backdrop-blur-md shadow-sm text-blue-900 font-medium" />
+                        <Input placeholder="Max" {...field} className="h-10 sm:h-11 bg-white/40 backdrop-blur-md shadow-sm text-blue-900 font-medium placeholder:text-gray-500" />
                       </FormControl>
                       <FormMessage className="text-xs sm:text-sm font-medium text-red-300" />
                     </FormItem>
@@ -233,7 +233,7 @@ export default function PetRegistration() {
                   name="breed"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="font-medium text-white text-sm sm:text-base">Raza</FormLabel>
+                      <FormLabel className="font-semibold text-black text-sm sm:text-base bg-white px-2 py-1 rounded-md shadow-sm border border-gray-200">Raza</FormLabel>
                       <Select onValueChange={(value) => {
                         field.onChange(value);
                         setShowCustomBreed(value === "Otro");
@@ -262,14 +262,14 @@ export default function PetRegistration() {
                 {/* Campo personalizado para "Otro" */}
                 {showCustomBreed && (
                   <div className="space-y-2">
-                    <label className="font-medium text-white text-sm sm:text-base">
+                    <label className="font-semibold text-black text-sm sm:text-base bg-white px-2 py-1 rounded-md shadow-sm border border-gray-200 inline-block">
                       Especifica la raza
                     </label>
                     <Input
                       placeholder="Ej: Mezcla de Labrador y Pastor"
                       value={customBreed}
                       onChange={(e) => setCustomBreed(e.target.value)}
-                      className="h-10 sm:h-11 bg-white/40 backdrop-blur-md shadow-sm text-blue-900 font-medium"
+                      className="h-10 sm:h-11 bg-white/40 backdrop-blur-md shadow-sm text-blue-900 font-medium placeholder:text-gray-500"
                     />
                   </div>
                 )}
@@ -278,13 +278,13 @@ export default function PetRegistration() {
                   name="age"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="font-medium text-white text-sm sm:text-base">Edad</FormLabel>
+                      <FormLabel className="font-semibold text-black text-sm sm:text-base bg-white px-2 py-1 rounded-md shadow-sm border border-gray-200">Edad</FormLabel>
                       <FormControl>
                         <Input 
                           type="number" 
                           placeholder="3" 
                           {...field} 
-                          className="h-10 sm:h-11 bg-white/40 backdrop-blur-md shadow-sm text-blue-900 font-medium" 
+                          className="h-10 sm:h-11 bg-white/40 backdrop-blur-md shadow-sm text-blue-900 font-medium placeholder:text-gray-500" 
                           min="0"
                           max="30"
                         />
