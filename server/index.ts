@@ -19,12 +19,16 @@ app.use(express.urlencoded({ extended: false }));
 // Configure session middleware
 app.use(
   session({
-    cookie: { maxAge: 86400000 },
+    cookie: { 
+      maxAge: 86400000,
+      secure: process.env.NODE_ENV === 'production',
+      httpOnly: true
+    },
     store: new MemoryStoreSession({
       checkPeriod: 86400000 // prune expired entries every 24h
     }),
     resave: false,
-    secret: 'your-secret-key',
+    secret: process.env.SESSION_SECRET || 'your-secret-key',
     saveUninitialized: false,
   })
 );
@@ -76,7 +80,7 @@ app.use((req, res, next) => {
     serveStatic(app);
   }
 
-  const PORT = 5000;
+  const PORT = process.env.PORT || 5000;
   server.listen(PORT, "0.0.0.0", () => {
     log(`serving on port ${PORT}`);
   });
