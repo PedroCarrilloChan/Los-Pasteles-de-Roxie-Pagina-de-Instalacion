@@ -219,7 +219,7 @@ export default function Home() {
                   name="phone"
                   render={({ field: { onChange, value, ...field } }) => (
                     <FormItem>
-                      <FormLabel className="font-semibold text-white text-sm sm:text-base px-2 py-1 rounded-md" style={{textShadow: '0 1px 3px rgba(0, 0, 0, 0.3), 0 1px 2px rgba(139, 69, 19, 0.2)'}}>Teléfono</FormLabel>
+                      <FormLabel className="form-label text-sm sm:text-base px-2 py-1 rounded-md">Teléfono</FormLabel>
                       <FormControl>
                         <PhoneInput
                           country={'mx'}
