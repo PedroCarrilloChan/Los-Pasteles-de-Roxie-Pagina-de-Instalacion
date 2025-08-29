@@ -175,7 +175,7 @@ export default function Home() {
                   name="firstName"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="font-semibold text-white text-sm sm:text-base px-2 py-1 rounded-md" style={{textShadow: '0 1px 3px rgba(0, 0, 0, 0.3), 0 1px 2px rgba(139, 69, 19, 0.2)'}}>Nombre</FormLabel>
+                      <FormLabel className="form-label text-sm sm:text-base px-2 py-1 rounded-md">Nombre</FormLabel>
                       <FormControl>
                         <Input placeholder="Juan" {...field} className="h-10 sm:h-11 bg-white/40 backdrop-blur-md shadow-sm text-gray-600 font-medium" />
                       </FormControl>
@@ -188,7 +188,7 @@ export default function Home() {
                   name="lastName"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="font-semibold text-white text-sm sm:text-base px-2 py-1 rounded-md" style={{textShadow: '0 1px 3px rgba(0, 0, 0, 0.3), 0 1px 2px rgba(139, 69, 19, 0.2)'}}>Apellido</FormLabel>
+                      <FormLabel className="form-label text-sm sm:text-base px-2 py-1 rounded-md">Apellido</FormLabel>
                       <FormControl>
                         <Input placeholder="Pérez" {...field} className="h-10 sm:h-11 bg-white/40 backdrop-blur-md shadow-sm text-gray-600 font-medium" />
                       </FormControl>
@@ -201,7 +201,7 @@ export default function Home() {
                   name="email"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="font-semibold text-white text-sm sm:text-base px-2 py-1 rounded-md" style={{textShadow: '0 1px 3px rgba(0, 0, 0, 0.3), 0 1px 2px rgba(139, 69, 19, 0.2)'}}>Correo Electrónico</FormLabel>
+                      <FormLabel className="form-label text-sm sm:text-base px-2 py-1 rounded-md">Correo Electrónico</FormLabel>
                       <FormControl>
                         <Input
                           type="email"

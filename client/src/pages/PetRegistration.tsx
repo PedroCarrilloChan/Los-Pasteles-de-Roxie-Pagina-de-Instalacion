@@ -220,7 +220,7 @@ export default function PetRegistration() {
                   name="petName"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="font-semibold text-white text-sm sm:text-base px-2 py-1 rounded-md" style={{textShadow: '0 1px 3px rgba(0, 0, 0, 0.3), 0 1px 2px rgba(139, 69, 19, 0.2)'}}>Nombre de la Mascota</FormLabel>
+                      <FormLabel className="form-label text-sm sm:text-base px-2 py-1 rounded-md">Nombre de la Mascota</FormLabel>
                       <FormControl>
                         <Input placeholder="Max" {...field} className="h-10 sm:h-11 bg-white/40 backdrop-blur-md shadow-sm text-blue-900 font-medium placeholder:text-gray-500" />
                       </FormControl>
@@ -233,7 +233,7 @@ export default function PetRegistration() {
                   name="breed"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="font-semibold text-white text-sm sm:text-base px-2 py-1 rounded-md" style={{textShadow: '0 1px 3px rgba(0, 0, 0, 0.3), 0 1px 2px rgba(139, 69, 19, 0.2)'}}>Raza</FormLabel>
+                      <FormLabel className="form-label text-sm sm:text-base px-2 py-1 rounded-md">Raza</FormLabel>
                       <Select onValueChange={(value) => {
                         field.onChange(value);
                         setShowCustomBreed(value === "Otro");
@@ -262,7 +262,7 @@ export default function PetRegistration() {
                 {/* Campo personalizado para "Otro" */}
                 {showCustomBreed && (
                   <div className="space-y-2">
-                    <label className="font-semibold text-white text-sm sm:text-base px-2 py-1 rounded-md inline-block" style={{textShadow: '0 1px 3px rgba(0, 0, 0, 0.3), 0 1px 2px rgba(139, 69, 19, 0.2)'}}>
+                    <label className="form-label text-sm sm:text-base px-2 py-1 rounded-md inline-block">
                       Especifica la raza
                     </label>
                     <Input
@@ -278,7 +278,7 @@ export default function PetRegistration() {
                   name="age"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="font-semibold text-white text-sm sm:text-base px-2 py-1 rounded-md" style={{textShadow: '0 1px 3px rgba(0, 0, 0, 0.3), 0 1px 2px rgba(139, 69, 19, 0.2)'}}>Edad</FormLabel>
+                      <FormLabel className="form-label text-sm sm:text-base px-2 py-1 rounded-md">Edad</FormLabel>
                       <FormControl>
                         <Input 
                           type="number" 
