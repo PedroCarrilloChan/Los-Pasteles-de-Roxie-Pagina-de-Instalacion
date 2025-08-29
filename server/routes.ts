@@ -415,7 +415,11 @@ export function registerRoutes(app: Express): Server {
         // No lanzamos error para no interrumpir el flujo principal
       }
 
-      res.json({ success: true });
+      // Ahora devolvemos todos los datos de lealtad inmediatamente
+      res.json({
+        success: true,
+        loyaltyData: responseData // Esta variable contiene los datos de SmartPasses
+      });
     } catch (error) {
       console.error('Error en registro de mascota:', error);
       res.status(500).json({ 

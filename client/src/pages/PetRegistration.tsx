@@ -113,13 +113,13 @@ export default function PetRegistration() {
         throw new Error(result.error || 'Error en el registro de la mascota');
       }
 
-      // Redirigir a la página de carga
-      // Guardar customer ID en localStorage para fallback
-      const loyaltyResponse = await fetch('/api/loyalty-data');
-      if (loyaltyResponse.ok) {
-        const loyaltyData = await loyaltyResponse.json();
-        if (loyaltyData.id) {
-          localStorage.setItem('customerId', loyaltyData.id.toString());
+      // Guardar los datos de lealtad que ahora vienen en la respuesta
+      if (result.loyaltyData) {
+        localStorage.setItem('loyaltyData', JSON.stringify(result.loyaltyData));
+        
+        // También guardar customer ID para fallback
+        if (result.loyaltyData.id) {
+          localStorage.setItem('customerId', result.loyaltyData.id.toString());
         }
       }
 

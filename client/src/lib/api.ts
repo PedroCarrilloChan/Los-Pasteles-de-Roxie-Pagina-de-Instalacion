@@ -42,12 +42,25 @@ export const loyaltyApi = {
   },
 
   getLoyaltyData: async (): Promise<LoyaltyResponse> => {
+    // Primero intentar obtener de localStorage (datos guardados después del registro)
+    const storedData = localStorage.getItem('loyaltyData');
+    if (storedData) {
+      try {
+        const loyaltyData = JSON.parse(storedData);
+        console.log('Usando datos de localStorage:', loyaltyData);
+        return loyaltyData;
+      } catch (parseError) {
+        console.error('Error al parsear datos de localStorage:', parseError);
+      }
+    }
+
+    // Fallback 1: intentar obtener de la sesión del servidor
     try {
       const response = await api.get<LoyaltyResponse>('/loyalty-data');
       return response.data;
     } catch (error) {
-      // Fallback: intentar obtener datos usando customer ID almacenado
-      console.log('Fallback: intentando obtener datos por customer ID');
+      // Fallback 2: intentar obtener datos usando customer ID almacenado
+      console.log('Fallback final: intentando obtener datos por customer ID');
       const customerId = localStorage.getItem('customerId');
       if (customerId) {
         const fallbackResponse = await api.get<LoyaltyResponse>(`/card-data/${customerId}`);
