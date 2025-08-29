@@ -14,6 +14,14 @@ const SERVER_CONFIG = {
   }
 };
 
+// Helper function para generar URLs usando PUBLIC_URL
+function generatePublicUrl(path: string, queryParams: Record<string, string> = {}): string {
+  const baseUrl = process.env.PUBLIC_URL || "http://localhost:5000";
+  const searchParams = new URLSearchParams(queryParams);
+  const queryString = searchParams.toString();
+  return `${baseUrl}${path}${queryString ? '?' + queryString : ''}`;
+}
+
 export function registerRoutes(app: Express): Server {
   const httpServer = createServer(app);
 
