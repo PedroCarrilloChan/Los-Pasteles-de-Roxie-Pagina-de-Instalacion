@@ -25,7 +25,7 @@ app.use(
       httpOnly: true
     },
     store: new MemoryStoreSession({
-      checkPeriod: 86400000 // prune expired entries every 24h.
+      checkPeriod: 86400000 // prune expired entries every
     }),
     resave: false,
     secret: process.env.SESSION_SECRET || 'your-secret-key',
